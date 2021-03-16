@@ -1,6 +1,6 @@
 #! NX/KF 10.0
 
-DefClass: New_Class_Name (ug_base_part);
+DefClass: testMaze (ug_base_part);
 
 (Child) floor: {
  Class, ug_block; 
