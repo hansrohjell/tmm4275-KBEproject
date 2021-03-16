@@ -1,6 +1,6 @@
 #! NX/KF 10.0
 
-DefClass: weldingTest (ug_base_part);
+DefClass: simpleWall (ug_base_part);
 
 # Set of default parameters for the part
   # 4 input parametere?
