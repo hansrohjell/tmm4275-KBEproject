@@ -6,8 +6,7 @@ def line_generator(length, width, originX, originY, iterator):
     fileString = ""
     fileString += weldLines    
     return fileString
-    
-
+ 
 def read_DFA(dfa_template):
     # Open dfa template
     file = open(dfa_template)
@@ -18,7 +17,9 @@ def read_DFA(dfa_template):
     file.close()
 
     file = open("weldedMaze.dfa", "w")
-
+         
+    s = s.replace(dfa_template[:-4], "weldedMaze") #Rename new file
+     
     walls = s.split("\n\n")
     i = 0
     while i < (len(walls) - 4):
@@ -40,9 +41,8 @@ def read_DFA(dfa_template):
         s += weldLines
         
         i += 1
-                     
-    file.write(s) # Hvordan endre navn på filen? Nødvendig?    
+             
+    file.write(s)   
     file.close()
-
 
 read_DFA("testMaze.dfa")
