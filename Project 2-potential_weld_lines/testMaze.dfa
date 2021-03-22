@@ -1,99 +1,99 @@
 #! NX/KF 10.0
 
-DefClass: weldMaze (ug_base_part);
+DefClass: testMaze (ug_base_part);
 (number parameter) fZ: 100;
 
 (Child) floor: {
  Class, ug_block; 
  Length, 500; 
  width, 500; 
- height, 100; 
+ height, fZ:; 
 }; 
 
 (Child) wall1: {
  Class, ug_block; 
  Length, 500; 
  width, 30; 
- height, 100; 
- origin, Point(0,470,100); 
+ height, fZ:; 
+ origin, Point(0,470,fZ:); 
 }; 
 
 (Child) wall2: {
  Class, ug_block; 
  Length, 30; 
- width, 380; 
- height, 100; 
- origin, Point(0,0,100); 
+ width, 400; 
+ height, fZ:; 
+ origin, Point(0,0,fZ:); 
 }; 
 
 (Child) wall3: {
  Class, ug_block; 
  Length, 470; 
  width, 30; 
- height, 100; 
- origin, Point(30,0,100); 
+ height, fZ:; 
+ origin, Point(30,0,fZ:); 
 }; 
 
 (Child) wall4: {
  Class, ug_block; 
  Length, 30; 
- width, 340; 
- height, 100; 
- origin, Point(470,30,100); 
+ width, 370; 
+ height, fZ:; 
+ origin, Point(470,70,fZ:); 
 }; 
 
 (Child) wall5: {
  Class, ug_block; 
- Length, 140; 
+ Length, 200; 
  width, 30; 
- height, 100; 
- origin, Point(330,190,100); 
+ height, fZ:; 
+ origin, Point(160,350,fZ:); 
 }; 
 
 (Child) wall6: {
  Class, ug_block; 
  Length, 30; 
  width, 200; 
- height, 100; 
- origin, Point(300,190,100); 
+ height, fZ:; 
+ origin, Point(300,150,fZ:); 
 }; 
 
 (Child) wall7: {
  Class, ug_block; 
  Length, 30; 
  width, 250; 
- height, 100; 
- origin, Point(100,220,100); 
+ height, fZ:; 
+ origin, Point(100,220,fZ:); 
 }; 
 
 (Child) wall8: {
  Class, ug_block; 
- Length, 320; 
+ Length, 300; 
  width, 30; 
- height, 100; 
- origin, Point(100,100,100); 
+ height, fZ:; 
+ origin, Point(100,100,fZ:); 
 }; 
 
 (Child) wall9: {
  Class, ug_block; 
  Length, 30; 
  width, 150; 
- height, 100; 
- origin, Point(190,130,100); 
+ height, fZ:; 
+ origin, Point(150,130,fZ:); 
 }; 
 
 (Child) wall10: {
  Class, ug_block; 
- Length, 50; 
+ Length, 100; 
  width, 30; 
- height, 100; 
- origin, Point(380,250,100); 
+ height, fZ:; 
+ origin, Point(350,250,fZ:); 
 }; 
 
 (Child) wall11: {
  Class, ug_block; 
  Length, 30; 
  width, 70; 
- height, 100; 
- origin, Point(250,30,100); 
+ height, fZ:; 
+ origin, Point(250,30,fZ:); 
 }; 
