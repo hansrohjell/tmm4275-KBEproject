@@ -1,6 +1,7 @@
 #! NX/KF 10.0
 
-DefClass: testMaze (ug_base_part);
+DefClass: weldMaze (ug_base_part);
+(number parameter) fZ: 100;
 
 (Child) floor: {
  Class, ug_block; 
@@ -13,14 +14,14 @@ DefClass: testMaze (ug_base_part);
  Class, ug_block; 
  Length, 500; 
  width, 30; 
- height, 500; 
- origin, Point(0,500,100); 
+ height, 100; 
+ origin, Point(0,470,100); 
 }; 
 
 (Child) wall2: {
  Class, ug_block; 
  Length, 30; 
- width, 400; 
+ width, 380; 
  height, 100; 
  origin, Point(0,0,100); 
 }; 
@@ -36,17 +37,17 @@ DefClass: testMaze (ug_base_part);
 (Child) wall4: {
  Class, ug_block; 
  Length, 30; 
- width, 370; 
+ width, 340; 
  height, 100; 
- origin, Point(470,70,100); 
+ origin, Point(470,30,100); 
 }; 
 
 (Child) wall5: {
  Class, ug_block; 
- Length, 200; 
+ Length, 140; 
  width, 30; 
  height, 100; 
- origin, Point(350,160,100); 
+ origin, Point(330,190,100); 
 }; 
 
 (Child) wall6: {
@@ -54,7 +55,7 @@ DefClass: testMaze (ug_base_part);
  Length, 30; 
  width, 200; 
  height, 100; 
- origin, Point(300,150,100); 
+ origin, Point(300,190,100); 
 }; 
 
 (Child) wall7: {
@@ -67,7 +68,7 @@ DefClass: testMaze (ug_base_part);
 
 (Child) wall8: {
  Class, ug_block; 
- Length, 400; 
+ Length, 320; 
  width, 30; 
  height, 100; 
  origin, Point(100,100,100); 
@@ -78,15 +79,15 @@ DefClass: testMaze (ug_base_part);
  Length, 30; 
  width, 150; 
  height, 100; 
- origin, Point(150,130,100); 
+ origin, Point(190,130,100); 
 }; 
 
 (Child) wall10: {
  Class, ug_block; 
- Length, 100; 
+ Length, 50; 
  width, 30; 
  height, 100; 
- origin, Point(350,250,100); 
+ origin, Point(380,250,100); 
 }; 
 
 (Child) wall11: {
