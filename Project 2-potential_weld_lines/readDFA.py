@@ -16,10 +16,10 @@ PORT_NUMBER = 1234
 #file paths
 
 dfa_template = Path("templates/testMaze.dfa")
-userinterface_file = Path("templates/html_testfile.html")
+userinterface_file = Path("templates/htmlServer.html")
 
 
-def isolate_dfa(s):
+def isolate_dfa(s): #removing start and end of fetched file
     new_string = s.split("stream\\r\\n\\r\\n")[1]
     newer_string = new_string.split("------Web")[0]
     return newer_string
@@ -33,12 +33,12 @@ def line_generator(length, width, originX, originY, iterator):
     fileString += weldLines    
     return fileString
 
-def rename(fileString):
+def rename(fileString): #rename the dfa file from the template name
     name = fileString.split("DefClass: ")[1].split(" (ug_base_part);")[0]
     renamedFile = fileString.replace(name, "weldedMaze")
     return renamedFile
  
-def read_DFA(dfa_template):
+def read_DFA(dfa_template): #reading the uploaded dfa file and writing to a new file.
     s = dfa_template.replace('\\r', '')
     s = s.replace('\\n', '\n')
     s = rename(s)
@@ -71,7 +71,7 @@ def read_DFA(dfa_template):
     file.close()   
 
 
-class MyHandler(BaseHTTPRequestHandler):
+class MyHandler(BaseHTTPRequestHandler): #the server
     def write_HTML_file(self, filename):
         self.wfile.write(bytes(open(filename).read(), 'utf-8'))
 

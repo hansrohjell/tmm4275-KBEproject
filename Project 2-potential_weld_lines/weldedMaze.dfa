@@ -1,7 +1,364 @@
-<<<<<<< HEAD
 #! NX/KF 10.0
 
-DefClass: testMaze (ug_base_part);
-=======
- NX/KF 10.0\r\n\r\nDefClass: weldMaze (ug_base_part);\r\n(number parameter) fZ: 100;\r\n\r\n(Child) floor: {\r\n Class, ug_block; \r\n Length, 500; \r\n width, 500; \r\n height, 100; \r\n}; \r\n\r\n(Child) wall1: {\r\n Class, ug_block; \r\n Length, 500; \r\n width, 30; \r\n height, 100; \r\n origin, Point(0,470,100); \r\n}; \r\n\r\n(Child) wall2: {\r\n Class, ug_block; \r\n Length, 30; \r\n width, 380; \r\n height, 100; \r\n origin, Point(0,0,100); \r\n}; \r\n\r\n(Child) wall3: {\r\n Class, ug_block; \r\n Length, 470; \r\n width, 30; \r\n height, 100; \r\n origin, Point(30,0,100); \r\n}; \r\n\r\n(Child) wall4: {\r\n Class, ug_block; \r\n Length, 30; \r\n width, 340; \r\n height, 100; \r\n origin, Point(470,30,100); \r\n}; \r\n\r\n(Child) wall5: {\r\n Class, ug_block; \r\n Length, 140; \r\n width, 30; \r\n height, 100; \r\n origin, Point(330,190,100); \r\n}; \r\n\r\n(Child) wall6: {\r\n Class, ug_block; \r\n Length, 30; \r\n width, 200; \r\n height, 100; \r\n origin, Point(300,190,100); \r\n}; \r\n\r\n(Child) wall7: {\r\n Class, ug_block; \r\n Length, 30; \r\n width, 250; \r\n height, 100; \r\n origin, Point(100,220,100); \r\n}; \r\n\r\n(Child) wall8: {\r\n Class, ug_block; \r\n Length, 320; \r\n width, 30; \r\n height, 100; \r\n origin, Point(100,100,100); \r\n}; \r\n\r\n(Child) wall9: {\r\n Class, ug_block; \r\n Length, 30; \r\n width, 150; \r\n height, 100; \r\n origin, Point(190,130,100); \r\n}; \r\n\r\n(Child) wall10: {\r\n Class, ug_block; \r\n Length, 50; \r\n width, 30; \r\n height, 100; \r\n origin, Point(380,250,100); \r\n}; \r\n\r\n(Child) wall11: {\r\n Class, ug_block; \r\n Length, 30; \r\n width, 70; \r\n height, 100; \r\n origin, Point(250,30,100); \r\n}; \r\n
->>>>>>> updated readDFA and folders
+DefClass: weldedMaze (ug_base_part);
+(number parameter) fZ: 100;
+
+(Child) floor: {
+ Class, ug_block; 
+ Length, 500; 
+ width, 500; 
+ height, fZ:; 
+}; 
+
+(Child) wall1: {
+ Class, ug_block; 
+ Length, 500; 
+ width, 30; 
+ height, fZ:; 
+ origin, Point(0,470,fZ:); 
+}; 
+
+(Child) wall2: {
+ Class, ug_block; 
+ Length, 30; 
+ width, 400; 
+ height, fZ:; 
+ origin, Point(0,0,fZ:); 
+}; 
+
+(Child) wall3: {
+ Class, ug_block; 
+ Length, 470; 
+ width, 30; 
+ height, fZ:; 
+ origin, Point(30,0,fZ:); 
+}; 
+
+(Child) wall4: {
+ Class, ug_block; 
+ Length, 30; 
+ width, 370; 
+ height, fZ:; 
+ origin, Point(470,70,fZ:); 
+}; 
+
+(Child) wall5: {
+ Class, ug_block; 
+ Length, 200; 
+ width, 30; 
+ height, fZ:; 
+ origin, Point(160,350,fZ:); 
+}; 
+
+(Child) wall6: {
+ Class, ug_block; 
+ Length, 30; 
+ width, 200; 
+ height, fZ:; 
+ origin, Point(300,150,fZ:); 
+}; 
+
+(Child) wall7: {
+ Class, ug_block; 
+ Length, 30; 
+ width, 250; 
+ height, fZ:; 
+ origin, Point(100,220,fZ:); 
+}; 
+
+(Child) wall8: {
+ Class, ug_block; 
+ Length, 300; 
+ width, 30; 
+ height, fZ:; 
+ origin, Point(100,100,fZ:); 
+}; 
+
+(Child) wall9: {
+ Class, ug_block; 
+ Length, 30; 
+ width, 150; 
+ height, fZ:; 
+ origin, Point(150,130,fZ:); 
+}; 
+
+(Child) wall10: {
+ Class, ug_block; 
+ Length, 100; 
+ width, 30; 
+ height, fZ:; 
+ origin, Point(350,250,fZ:); 
+}; 
+
+(Child) wall11: {
+ Class, ug_block; 
+ Length, 30; 
+ width, 70; 
+ height, fZ:; 
+ origin, Point(250,30,fZ:); 
+}; 
+
+(Child) line_1: {
+ Class, ug_line; 
+ Start_Point, Point(0, 470, fZ:); 
+ End_Point, Point(500, 470, fZ:); 
+};
+
+(Child) line_2: {
+ Class, ug_line; 
+ Start_Point, Point(500, 470, fZ:); 
+ End_Point, Point(500, 500, fZ:); 
+};
+
+(Child) line_3: {
+ Class, ug_line; 
+ Start_Point, Point(500, 500, fZ:); 
+ End_Point, Point(0, 500, fZ:); 
+};
+
+(Child) line_4: {
+ Class, ug_line; 
+ Start_Point, Point(0, 500, fZ:); 
+ End_Point, Point(0, 470, fZ:); 
+};
+
+(Child) line_5: {
+ Class, ug_line; 
+ Start_Point, Point(0, 0, fZ:); 
+ End_Point, Point(30, 0, fZ:); 
+};
+
+(Child) line_6: {
+ Class, ug_line; 
+ Start_Point, Point(30, 0, fZ:); 
+ End_Point, Point(30, 400, fZ:); 
+};
+
+(Child) line_7: {
+ Class, ug_line; 
+ Start_Point, Point(30, 400, fZ:); 
+ End_Point, Point(0, 400, fZ:); 
+};
+
+(Child) line_8: {
+ Class, ug_line; 
+ Start_Point, Point(0, 400, fZ:); 
+ End_Point, Point(0, 0, fZ:); 
+};
+
+(Child) line_9: {
+ Class, ug_line; 
+ Start_Point, Point(30, 0, fZ:); 
+ End_Point, Point(500, 0, fZ:); 
+};
+
+(Child) line_10: {
+ Class, ug_line; 
+ Start_Point, Point(500, 0, fZ:); 
+ End_Point, Point(500, 30, fZ:); 
+};
+
+(Child) line_11: {
+ Class, ug_line; 
+ Start_Point, Point(500, 30, fZ:); 
+ End_Point, Point(30, 30, fZ:); 
+};
+
+(Child) line_12: {
+ Class, ug_line; 
+ Start_Point, Point(30, 30, fZ:); 
+ End_Point, Point(30, 0, fZ:); 
+};
+
+(Child) line_13: {
+ Class, ug_line; 
+ Start_Point, Point(470, 70, fZ:); 
+ End_Point, Point(500, 70, fZ:); 
+};
+
+(Child) line_14: {
+ Class, ug_line; 
+ Start_Point, Point(500, 70, fZ:); 
+ End_Point, Point(500, 440, fZ:); 
+};
+
+(Child) line_15: {
+ Class, ug_line; 
+ Start_Point, Point(500, 440, fZ:); 
+ End_Point, Point(470, 440, fZ:); 
+};
+
+(Child) line_16: {
+ Class, ug_line; 
+ Start_Point, Point(470, 440, fZ:); 
+ End_Point, Point(470, 70, fZ:); 
+};
+
+(Child) line_17: {
+ Class, ug_line; 
+ Start_Point, Point(160, 350, fZ:); 
+ End_Point, Point(360, 350, fZ:); 
+};
+
+(Child) line_18: {
+ Class, ug_line; 
+ Start_Point, Point(360, 350, fZ:); 
+ End_Point, Point(360, 380, fZ:); 
+};
+
+(Child) line_19: {
+ Class, ug_line; 
+ Start_Point, Point(360, 380, fZ:); 
+ End_Point, Point(160, 380, fZ:); 
+};
+
+(Child) line_20: {
+ Class, ug_line; 
+ Start_Point, Point(160, 380, fZ:); 
+ End_Point, Point(160, 350, fZ:); 
+};
+
+(Child) line_21: {
+ Class, ug_line; 
+ Start_Point, Point(300, 150, fZ:); 
+ End_Point, Point(330, 150, fZ:); 
+};
+
+(Child) line_22: {
+ Class, ug_line; 
+ Start_Point, Point(330, 150, fZ:); 
+ End_Point, Point(330, 350, fZ:); 
+};
+
+(Child) line_23: {
+ Class, ug_line; 
+ Start_Point, Point(330, 350, fZ:); 
+ End_Point, Point(300, 350, fZ:); 
+};
+
+(Child) line_24: {
+ Class, ug_line; 
+ Start_Point, Point(300, 350, fZ:); 
+ End_Point, Point(300, 150, fZ:); 
+};
+
+(Child) line_25: {
+ Class, ug_line; 
+ Start_Point, Point(100, 220, fZ:); 
+ End_Point, Point(130, 220, fZ:); 
+};
+
+(Child) line_26: {
+ Class, ug_line; 
+ Start_Point, Point(130, 220, fZ:); 
+ End_Point, Point(130, 470, fZ:); 
+};
+
+(Child) line_27: {
+ Class, ug_line; 
+ Start_Point, Point(130, 470, fZ:); 
+ End_Point, Point(100, 470, fZ:); 
+};
+
+(Child) line_28: {
+ Class, ug_line; 
+ Start_Point, Point(100, 470, fZ:); 
+ End_Point, Point(100, 220, fZ:); 
+};
+
+(Child) line_29: {
+ Class, ug_line; 
+ Start_Point, Point(100, 100, fZ:); 
+ End_Point, Point(400, 100, fZ:); 
+};
+
+(Child) line_30: {
+ Class, ug_line; 
+ Start_Point, Point(400, 100, fZ:); 
+ End_Point, Point(400, 130, fZ:); 
+};
+
+(Child) line_31: {
+ Class, ug_line; 
+ Start_Point, Point(400, 130, fZ:); 
+ End_Point, Point(100, 130, fZ:); 
+};
+
+(Child) line_32: {
+ Class, ug_line; 
+ Start_Point, Point(100, 130, fZ:); 
+ End_Point, Point(100, 100, fZ:); 
+};
+
+(Child) line_33: {
+ Class, ug_line; 
+ Start_Point, Point(150, 130, fZ:); 
+ End_Point, Point(180, 130, fZ:); 
+};
+
+(Child) line_34: {
+ Class, ug_line; 
+ Start_Point, Point(180, 130, fZ:); 
+ End_Point, Point(180, 280, fZ:); 
+};
+
+(Child) line_35: {
+ Class, ug_line; 
+ Start_Point, Point(180, 280, fZ:); 
+ End_Point, Point(150, 280, fZ:); 
+};
+
+(Child) line_36: {
+ Class, ug_line; 
+ Start_Point, Point(150, 280, fZ:); 
+ End_Point, Point(150, 130, fZ:); 
+};
+
+(Child) line_37: {
+ Class, ug_line; 
+ Start_Point, Point(350, 250, fZ:); 
+ End_Point, Point(450, 250, fZ:); 
+};
+
+(Child) line_38: {
+ Class, ug_line; 
+ Start_Point, Point(450, 250, fZ:); 
+ End_Point, Point(450, 280, fZ:); 
+};
+
+(Child) line_39: {
+ Class, ug_line; 
+ Start_Point, Point(450, 280, fZ:); 
+ End_Point, Point(350, 280, fZ:); 
+};
+
+(Child) line_40: {
+ Class, ug_line; 
+ Start_Point, Point(350, 280, fZ:); 
+ End_Point, Point(350, 250, fZ:); 
+};
+
+(Child) line_41: {
+ Class, ug_line; 
+ Start_Point, Point(250, 30, fZ:); 
+ End_Point, Point(280, 30, fZ:); 
+};
+
+(Child) line_42: {
+ Class, ug_line; 
+ Start_Point, Point(280, 30, fZ:); 
+ End_Point, Point(280, 100, fZ:); 
+};
+
+(Child) line_43: {
+ Class, ug_line; 
+ Start_Point, Point(280, 100, fZ:); 
+ End_Point, Point(250, 100, fZ:); 
+};
+
+(Child) line_44: {
+ Class, ug_line; 
+ Start_Point, Point(250, 100, fZ:); 
+ End_Point, Point(250, 30, fZ:); 
+};
+
