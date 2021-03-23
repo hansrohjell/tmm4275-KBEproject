@@ -39,8 +39,9 @@ def read_DFA(dfa_template):
     #s = dfa_template.replace("\r", " $ ")
     #s = str(dfa_template, 'utf-8').replace('\r\n', ' ')
     print(type(dfa_template))
-    s = dfa_template.replace('\\r\\n', ' ')
-    
+    #s = dfa_template.replace('\\r\\n', ' ')
+    s = dfa_template.replace('\\r', '')
+
     #s = file.replace("\r", "") # Erstattet "" med file for testing
     #for line in file:
      #   s += line # adding each line in a string.
@@ -56,10 +57,10 @@ def read_DFA(dfa_template):
     print(s)
 
 
-    walls = s.split("\n\n")
+    walls = s.split("\\n\\n")
     i = 0
-    while i < (len(walls) - 4):
-        wall = walls[i+3].split("; \n")
+    while i < (len(walls) - 3):
+        wall = walls[i+3].split("; \\n")
 
         length_param = wall[1].split(" ")
         length = length_param[2]
