@@ -41,6 +41,7 @@ def read_DFA(dfa_template):
     print(type(dfa_template))
     #s = dfa_template.replace('\\r\\n', ' ')
     s = dfa_template.replace('\\r', '')
+    
 
     #s = file.replace("\r", "") # Erstattet "" med file for testing
     #for line in file:
@@ -52,16 +53,17 @@ def read_DFA(dfa_template):
          
     #s = s.replace(dfa_template[:-4], "weldedMaze") #Rename new file
     s = rename(s)
+    
     #s = s.replace("DefClass", "Filnavn")
     #s.rstrip()
-    print(s)
+    #print(s)
 
 
     walls = s.split("\\n\\n")
     i = 0
-    while i < (len(walls) - 3):
-        wall = walls[i+3].split("; \\n")
-
+    while i < (len(walls) - 5): # Hva skal grenseverdien være?
+        wall = walls[i+4].split("; \\n")
+        print(wall)
         length_param = wall[1].split(" ")
         length = length_param[2]
 
