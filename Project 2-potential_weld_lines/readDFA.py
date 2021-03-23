@@ -19,6 +19,11 @@ dfa_template = Path("templates/testMaze.dfa")
 userinterface_file = Path("templates/html_testfile.html")
 
 
+def isolate_dfa(s):
+    new_string = s.split("stream\\r\\n\\r\\n")[1]
+    newer_string = new_string.split("------Web")[0]
+    return newer_string
+
 def line_generator(length, width, originX, originY, iterator):
     counter = 4 * iterator
     dx = originX + length
@@ -34,36 +39,17 @@ def rename(fileString):
     return renamedFile
  
 def read_DFA(dfa_template):
-    # Open dfa template
-    
-    #s = dfa_template.replace("\r", " $ ")
-    #s = str(dfa_template, 'utf-8').replace('\r\n', ' ')
-    print(type(dfa_template))
-    #s = dfa_template.replace('\\r\\n', ' ')
     s = dfa_template.replace('\\r', '')
-    
-
-    #s = file.replace("\r", "") # Erstattet "" med file for testing
-    #for line in file:
-     #   s += line # adding each line in a string.
-        #line.replace("\r", "")
-    #file.close()
+    s = s.replace('\\n', '\n')
+    s = rename(s)
 
     file = open("weldedMaze.dfa", "w")
-         
-    #s = s.replace(dfa_template[:-4], "weldedMaze") #Rename new file
-    s = rename(s)
-    
-    #s = s.replace("DefClass", "Filnavn")
-    #s.rstrip()
-    #print(s)
 
-
-    walls = s.split("\\n\\n")
+    walls = s.split("\n\n")
     i = 0
-    while i < (len(walls) - 5): # Hva skal grenseverdien være?
-        wall = walls[i+4].split("; \\n")
-        print(wall)
+    while i < (len(walls) - 4):
+        wall = walls[i+3].split("; \n")
+        
         length_param = wall[1].split(" ")
         length = length_param[2]
 
@@ -82,14 +68,7 @@ def read_DFA(dfa_template):
         i += 1
              
     file.write(s)   
-    file.close()
-    #return s
-
-def isolate_dfa(s):
-    new_string = s.split("octet-stream")[1]
-    newer_string = new_string.split("------Web")[0]
-    return newer_string
-    
+    file.close()   
 
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -115,7 +94,6 @@ class MyHandler(BaseHTTPRequestHandler):
         if self.path.find("/weldMaze") != -1:
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
-            #print(post_body)
             dfa_file = isolate_dfa(str(post_body))
             read_DFA(dfa_file)
 
