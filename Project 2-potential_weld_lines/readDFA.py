@@ -1,3 +1,24 @@
+import cgi, os
+import cgitb; cgitb.enable()
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import re
+from pathlib import Path
+import math
+from typing import Text
+#import NXopen
+
+HOST_NAME = '127.0.0.1'  # localhost - http://127.0.0.1
+# Maybe set this to 1234 / So, complete address would be: http://127.0.0.1:1234
+PORT_NUMBER = 1234
+# Web servers example: http://www.ntnu.edu:80
+
+
+#file paths
+
+dfa_template = Path("templates/testMaze.dfa")
+userinterface_file = Path("templates/html_testfile.html")
+
+
 def line_generator(length, width, originX, originY, iterator):
     counter = 4 * iterator
     dx = originX + length
@@ -9,12 +30,14 @@ def line_generator(length, width, originX, originY, iterator):
  
 def read_DFA(dfa_template):
     # Open dfa template
-    file = open(dfa_template)
+    
+    file = dfa_template
     s = ""
     for line in file:
         s += line # adding each line in a string.
-        
-    file.close()
+        line.replace("\r", "")
+
+    #file.close()
 
     file = open("weldedMaze.dfa", "w")
          
@@ -45,4 +68,79 @@ def read_DFA(dfa_template):
     file.write(s)   
     file.close()
 
+<<<<<<< HEAD
 read_DFA("testMaze.dfa")
+=======
+
+#read_DFA(dfa_template)
+def isolate_dfa(s):
+    new_string = s.split("n#!")[1].split("------Web")[0]
+    return new_string
+
+
+
+class MyHandler(BaseHTTPRequestHandler):
+    def write_HTML_file(self, filename):
+        self.wfile.write(bytes(open(filename).read(), 'utf-8'))
+
+    def do_GET(self):
+        if self.path == '/' or self.path == "/weldMaze":
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.write_HTML_file(userinterface_file)
+        else:
+            self.send_response(404)
+            self.end_headers()
+            self.wfile.write(bytes("Error. The file" + self.path + "does not exist.", 'utf-8'))
+
+    def do_POST(self):
+        self.send_response(200)
+        self.send_header("content-type", "text/html")
+        self.end_headers()
+
+
+        if self.path.find("/weldMaze") != -1:
+            content_len = int(self.headers.get('Content-Length'))
+            post_body = self.rfile.read(content_len)
+            #print(post_body)
+            dfa_file = isolate_dfa(str(post_body))
+            print(dfa_file)
+
+            """
+            form = cgi.FieldStorage()
+            fileitem = form.getvalue('filename')
+            if fileitem.filename:
+                # strip leading path from file name to avoid
+                # directory traversal attacks
+                fn = os.path.basename(fileitem.filename)
+                open('/tmp/' + fn, 'wb').write(fileitem.file.read())
+                message = 'The file "' + fn + '" was uploaded successfully'
+            else:
+                message = 'No file was uploaded'
+            print(message)
+            
+                #form_file is now a file object in python
+            """
+
+            """
+            form = cgi.FieldStorage(keep_blank_values=1)
+            fileitem = form['filename']
+            #get the file
+            if fileitem.filename:
+                fn = os.path.basename(fileitem.filename)
+                read_DFA(fn)
+            """ 
+
+
+
+if __name__ == '__main__':
+    server_class = HTTPServer
+    httpd = server_class((HOST_NAME, PORT_NUMBER), MyHandler)
+
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    httpd.server_close()
+>>>>>>> updated readDFA and folders

@@ -94,6 +94,12 @@ DefClass: testMaze (ug_base_part);
  Class, ug_block; 
  Length, 30; 
  width, 70; 
+<<<<<<< HEAD:Project 2-potential_weld_lines/testMaze.dfa
  height, fZ:; 
  origin, Point(250,30,fZ:); 
 }; 
+=======
+ height, 100; 
+ origin, Point(250,30,100); 
+}; 
+>>>>>>> updated readDFA and folders:Project 2-potential_weld_lines/templates/testMaze.dfa
