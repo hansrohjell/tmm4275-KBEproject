@@ -27,22 +27,35 @@ def line_generator(length, width, originX, originY, iterator):
     fileString = ""
     fileString += weldLines    
     return fileString
+
+def rename(fileString):
+    name = fileString.split("DefClass: ")[1].split(" (ug_base_part);")[0]
+    renamedFile = fileString.replace(name, "weldedMaze")
+    return renamedFile
  
 def read_DFA(dfa_template):
     # Open dfa template
     
-    file = dfa_template
-    s = ""
-    for line in file:
-        s += line # adding each line in a string.
-        line.replace("\r", "")
-
+    #s = dfa_template.replace("\r", " $ ")
+    #s = str(dfa_template, 'utf-8').replace('\r\n', ' ')
+    print(type(dfa_template))
+    s = dfa_template.replace('\\r\\n', ' ')
+    
+    #s = file.replace("\r", "") # Erstattet "" med file for testing
+    #for line in file:
+     #   s += line # adding each line in a string.
+        #line.replace("\r", "")
     #file.close()
 
     file = open("weldedMaze.dfa", "w")
          
-    s = s.replace(dfa_template[:-4], "weldedMaze") #Rename new file
-     
+    #s = s.replace(dfa_template[:-4], "weldedMaze") #Rename new file
+    s = rename(s)
+    #s = s.replace("DefClass", "Filnavn")
+    #s.rstrip()
+    print(s)
+
+
     walls = s.split("\n\n")
     i = 0
     while i < (len(walls) - 4):
@@ -67,16 +80,13 @@ def read_DFA(dfa_template):
              
     file.write(s)   
     file.close()
+    #return s
 
-<<<<<<< HEAD
-read_DFA("testMaze.dfa")
-=======
-
-#read_DFA(dfa_template)
 def isolate_dfa(s):
-    new_string = s.split("n#!")[1].split("------Web")[0]
-    return new_string
-
+    new_string = s.split("octet-stream")[1]
+    newer_string = new_string.split("------Web")[0]
+    return newer_string
+    
 
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -99,40 +109,12 @@ class MyHandler(BaseHTTPRequestHandler):
         self.send_header("content-type", "text/html")
         self.end_headers()
 
-
         if self.path.find("/weldMaze") != -1:
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
             #print(post_body)
             dfa_file = isolate_dfa(str(post_body))
-            print(dfa_file)
-
-            """
-            form = cgi.FieldStorage()
-            fileitem = form.getvalue('filename')
-            if fileitem.filename:
-                # strip leading path from file name to avoid
-                # directory traversal attacks
-                fn = os.path.basename(fileitem.filename)
-                open('/tmp/' + fn, 'wb').write(fileitem.file.read())
-                message = 'The file "' + fn + '" was uploaded successfully'
-            else:
-                message = 'No file was uploaded'
-            print(message)
-            
-                #form_file is now a file object in python
-            """
-
-            """
-            form = cgi.FieldStorage(keep_blank_values=1)
-            fileitem = form['filename']
-            #get the file
-            if fileitem.filename:
-                fn = os.path.basename(fileitem.filename)
-                read_DFA(fn)
-            """ 
-
-
+            read_DFA(dfa_file)
 
 if __name__ == '__main__':
     server_class = HTTPServer
@@ -143,4 +125,3 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         pass
     httpd.server_close()
->>>>>>> updated readDFA and folders
