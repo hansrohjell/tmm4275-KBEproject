@@ -71,9 +71,10 @@ def read_DFA(dfa_template): #reading the uploaded dfa file and writing to a new 
     file.write(s)   
     file.close()   
 
+"""
 def error_message(error_filename):
     file = error_filename
-
+"""
 
 
 def reload_nx():
@@ -82,6 +83,41 @@ def reload_nx():
     displayPart = theSession.Parts.Display
 
     workPart.RuleManager.Reload(True)
+
+def export_nx_img():
+    theSession = NXOpen.Session.GetSession()
+    workPart = theSession.Parts.Work
+    displayPart = theSession.Parts.Display
+
+    markId1 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    theUI = NXOpen.UI.GetUI()
+
+    imageExportBuilder1 = theUI.CreateImageExportBuilder()
+
+    imageExportBuilder1.RegionMode = False
+
+    regiontopleftpoint1 = [None] * 2
+    regiontopleftpoint1[0] = 0
+    regiontopleftpoint1[1] = 0
+    imageExportBuilder1.SetRegionTopLeftPoint(regiontopleftpoint1)
+
+    imageExportBuilder1.RegionWidth = 1
+
+    imageExportBuilder1.RegionHeight = 1
+
+    imageExportBuilder1.FileFormat = NXOpen.Gateway.ImageExportBuilder.FileFormats.Png
+
+    imageExportBuilder1.FileName = "<YOUR PATH HERE>"
+
+    imageExportBuilder1.BackgroundOption = NXOpen.Gateway.ImageExportBuilder.BackgroundOptions.Original
+
+    imageExportBuilder1.EnhanceEdges = False
+
+    nXObject1 = imageExportBuilder1.Commit()
+
+    theSession.DeleteUndoMark(markId1, "Export Image")
+
+    imageExportBuilder1.Destroy()
 
 
 class MyHandler(BaseHTTPRequestHandler): #the server
@@ -118,6 +154,7 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             read_DFA(dfa_file)
             
             self.write_HTML_file(userinterface_correct)
+            #reload_nx()
 
 if __name__ == '__main__':
     server_class = HTTPServer
