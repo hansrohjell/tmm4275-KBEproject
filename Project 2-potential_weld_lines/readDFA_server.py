@@ -19,6 +19,7 @@ dfa_template = Path("templates/testMaze.dfa")
 userinterface_file = Path("templates/htmlServer.html")
 userinterface_error = Path("templates/userinterface_error.html")
 userinterface_correct = Path("templates/userinterface_correct.html")
+#image_file = Path("theMaze.png") # Husk å sette inn bildefil i mappa!
 
 def isolate_dfa(s): #removing start and end of fetched file
     new_string = s.split("', b'")[1]
@@ -130,6 +131,15 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             self.send_header("Content-type", "text/html")
             self.end_headers()
             self.write_HTML_file(userinterface_file)
+
+        elif(self.path == '/theproduct.png') != -1:
+            self.send_response(200)
+            self.send_header("Content-type", "image/png")
+            self.end_headers()
+            bReader = open(image_file, "rb")
+            theImg = bReader.read()
+            self.wfile.write(theImg)
+
         else:
             self.send_response(404)
             self.end_headers()
