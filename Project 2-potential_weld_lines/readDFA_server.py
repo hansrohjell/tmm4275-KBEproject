@@ -146,15 +146,15 @@ class MyHandler(BaseHTTPRequestHandler): #the server
         if filename[-4:] != ".dfa":
            self.write_HTML_file(userinterface_error)
         
-        #else:
-        if self.path.find("/weldMaze") != -1:
-            #content_len = int(self.headers.get('Content-Length'))
-            #post_body = self.rfile.read(content_len)
-            dfa_file = isolate_dfa(str(form))
-            read_DFA(dfa_file)
-            
-            self.write_HTML_file(userinterface_correct)
-            #reload_nx()
+        else:
+            if self.path.find("/weldMaze") != -1:
+                #content_len = int(self.headers.get('Content-Length'))
+                #post_body = self.rfile.read(content_len)
+                dfa_file = isolate_dfa(str(form))
+                read_DFA(dfa_file)
+                
+                self.write_HTML_file(userinterface_correct)
+                #reload_nx()
 
 if __name__ == '__main__':
     server_class = HTTPServer

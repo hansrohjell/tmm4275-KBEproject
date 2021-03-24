@@ -8,6 +8,9 @@
         padding: 20px;
         background-color: #f44336;
         color: white;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
         }
 
         .closebtn {
@@ -24,16 +27,30 @@
         .closebtn:hover {
         color: black;
         }
+        #bckgrnd {
+        padding: 15px;
+        background: lightgrey;
+        background-clip: border-box;  
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+h1 {text-align: center;}
+
     </style>
 </head>
 <body>
 
 	<h1>Potential Weld Line Generator</h1>
-    <h3>User input</h3>
-   <form enctype = "multipart/form-data" action = "weldMaze" method = "POST"> 
+    <div id="bckgrnd">
+        <h3>Upload the maze</h3>
+        <p>Please upload the maze as a .dfa file</p>
+        <form enctype = "multipart/form-data" action = "weldMaze" method = "POST"> 
         <p>Upload File: <input type = "file" name = "filename" value="" /></p> 
         <p><input type = "submit" value = "Upload" /></p> 
     </form> 
+    </div>
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
         <strong>ERROR!</strong> The file is not a '.dfa' file. Try again.

@@ -3,17 +3,32 @@
 
 <head>
     <title>Potential Weld Line Generator</title>
-    
+<style>
+#bckgrnd {
+  padding: 15px;
+  background: lightgrey;
+  background-clip: border-box;  
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {text-align: center;}
+
+</style>
 </head>
 <body>
-
+    <div id="center">
 	<h1>Potential Weld Line Generator</h1>
-    <h3>User input</h3>
-   <form enctype = "multipart/form-data" action = "weldMaze" method = "POST"> 
+    </div>
+    <div id="bckgrnd">
+        <h3>Upload the maze</h3>
+        <p>Please upload the maze as a .dfa file</p>
+        <form enctype = "multipart/form-data" action = "weldMaze" method = "POST"> 
         <p>Upload File: <input type = "file" name = "filename" value="" /></p> 
         <p><input type = "submit" value = "Upload" /></p> 
     </form> 
-    
+    </div>
 </body>
 
 </html>
