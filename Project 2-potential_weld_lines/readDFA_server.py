@@ -47,7 +47,7 @@ def line_extruder(lines, number):
 
         feature = " Feature, {extrusion_weld_" + str(counter) + ":};"
         layer = "\n Layer, 1;"
-        color = "\n color, ug_askClosestColor(RED);"
+        color = "\n color, ug_askClosestColor(DARK_DULL_GREEN);"
         colored_line = colorable_lines[i].split("Start")[0] + feature + layer + color + "\n};"
         colored_lines += colored_line
     
@@ -58,7 +58,7 @@ def line_generator(length, width, originX, originY, iterator):
     counter = 4 * iterator
     dx = originX + length
     dy = originY + width
-    weldLines = "\n\n(Child) line_"+str(counter+1)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(originY)+", fZ:+0.1); \n End_Point, Point("+str(dx)+", "+str(originY)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+2)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(originY)+", fZ:+0.1); \n End_Point, Point("+str(dx)+", "+str(dy)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+3)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(dy)+", fZ:+0.1); \n End_Point, Point("+str(originX)+", "+str(dy)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+4)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(dy)+", fZ:+0.1); \n End_Point, Point("+str(originX)+", "+str(originY)+", fZ:+0.1); \n};\n\n"
+    weldLines = "\n\n(Child) line_"+str(counter+1)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX-3)+", "+str(originY)+", fZ:+0.1); \n End_Point, Point("+str(dx+3)+", "+str(originY)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+2)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(originY-3)+", fZ:+0.1); \n End_Point, Point("+str(dx)+", "+str(dy+3)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+3)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx+3)+", "+str(dy)+", fZ:+0.1); \n End_Point, Point("+str(originX-3)+", "+str(dy)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+4)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(dy+3)+", fZ:+0.1); \n End_Point, Point("+str(originX)+", "+str(originY-3)+", fZ:+0.1); \n};\n\n"
     extruded_lines = line_extruder(weldLines, counter)
     fileString = ""
     fileString += weldLines
