@@ -132,7 +132,7 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             self.end_headers()
             self.write_HTML_file(userinterface_file)
 
-        elif(self.path == '/theproduct.png') != -1:
+        elif(self.path == '/theMaze.png') != -1:
             self.send_response(200)
             self.send_header("Content-type", "image/png")
             self.end_headers()
