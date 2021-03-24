@@ -1,6 +1,6 @@
 #! NX/KF 10.0
 
-DefClass: weldedMaze (ug_base_part);
+DefClass: testMaze (ug_base_part);
 (number parameter) fZ: 100;
 
 (Child) floor: {
@@ -97,7 +97,6 @@ DefClass: weldedMaze (ug_base_part);
  height, fZ:; 
  origin, Point(250,30,fZ:); 
 }; 
-
 (Child) line_1: {
  Class, ug_line; 
  Start_Point, Point(0, 470, fZ:); 

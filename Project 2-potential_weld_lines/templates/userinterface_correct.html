@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Potential Weld Line Generator</title>
+    <style>
+        .alert {
+        padding: 20px;
+        background-color: #008000;
+        color: white;
+        }
+
+        .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtn:hover {
+        color: black;
+        }
+    </style>
+</head>
+<body>
+
+	<h1>Potential Weld Line Generator</h1>
+    <h3>User input</h3>
+   <form enctype = "multipart/form-data" action = "weldMaze" method = "POST"> 
+        <p>Upload File: <input type = "file" name = "filename" value="" /></p> 
+        <p><input type = "submit" value = "Upload" /></p> 
+    </form> 
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Success!</strong> The file is uploaded and weld lines is generated.
+    </div>
+    
+</body>
+
+</html>

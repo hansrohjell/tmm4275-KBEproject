@@ -17,11 +17,12 @@ PORT_NUMBER = 1234
 
 dfa_template = Path("templates/testMaze.dfa")
 userinterface_file = Path("templates/htmlServer.html")
-
+userinterface_error = Path("templates/userinterface_error.html")
+userinterface_correct = Path("templates/userinterface_correct.html")
 
 def isolate_dfa(s): #removing start and end of fetched file
-    new_string = s.split("stream\\r\\n\\r\\n")[1]
-    newer_string = new_string.split("------Web")[0]
+    new_string = s.split("', b'")[1]
+    newer_string = new_string.split("')])")[0]
     return newer_string
 
 def line_generator(length, width, originX, originY, iterator):
@@ -33,7 +34,7 @@ def line_generator(length, width, originX, originY, iterator):
     fileString += weldLines    
     return fileString
 
-def rename(fileString): #rename the dfa file from the template name
+def rename(fileString): #rename the dfa file from the template name. Maybe we won't use this.
     name = fileString.split("DefClass: ")[1].split(" (ug_base_part);")[0]
     renamedFile = fileString.replace(name, "weldedMaze")
     return renamedFile
@@ -41,13 +42,13 @@ def rename(fileString): #rename the dfa file from the template name
 def read_DFA(dfa_template): #reading the uploaded dfa file and writing to a new file.
     s = dfa_template.replace('\\r', '')
     s = s.replace('\\n', '\n')
-    s = rename(s)
+    #s = rename(s)
 
     file = open("weldedMaze.dfa", "w")
 
     walls = s.split("\n\n")
     i = 0
-    while i < (len(walls) - 4):
+    while i < (len(walls) - 3):
         wall = walls[i+3].split("; \n")
         
         length_param = wall[1].split(" ")
@@ -70,6 +71,18 @@ def read_DFA(dfa_template): #reading the uploaded dfa file and writing to a new 
     file.write(s)   
     file.close()   
 
+def error_message(error_filename):
+    file = error_filename
+
+
+
+def reload_nx():
+    theSession = NXOpen.Session.GetSession()
+    workPart = theSession.Parts.Work
+    displayPart = theSession.Parts.Display
+
+    workPart.RuleManager.Reload(True)
+
 
 class MyHandler(BaseHTTPRequestHandler): #the server
     def write_HTML_file(self, filename):
@@ -84,18 +97,27 @@ class MyHandler(BaseHTTPRequestHandler): #the server
         else:
             self.send_response(404)
             self.end_headers()
-            self.wfile.write(bytes("Error. The file" + self.path + "does not exist.", 'utf-8'))
+            self.wfile.write(bytes("Error. The file " + self.path + " does not exist.", 'utf-8'))
 
     def do_POST(self):
         self.send_response(200)
         self.send_header("content-type", "text/html")
         self.end_headers()
 
+        
+        form = cgi.FieldStorage( fp=self.rfile, headers=self.headers, environ={'REQUEST_METHOD':'POST', 'CONTENT_TYPE':self.headers['Content-Type'], })
+        filename = form['filename'].filename
+        if filename[-4:] != ".dfa":
+           self.write_HTML_file(userinterface_error)
+        
+        #else:
         if self.path.find("/weldMaze") != -1:
-            content_len = int(self.headers.get('Content-Length'))
-            post_body = self.rfile.read(content_len)
-            dfa_file = isolate_dfa(str(post_body))
+            #content_len = int(self.headers.get('Content-Length'))
+            #post_body = self.rfile.read(content_len)
+            dfa_file = isolate_dfa(str(form))
             read_DFA(dfa_file)
+            
+            self.write_HTML_file(userinterface_correct)
 
 if __name__ == '__main__':
     server_class = HTTPServer
