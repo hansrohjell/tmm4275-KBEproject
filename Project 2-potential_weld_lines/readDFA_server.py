@@ -26,13 +26,43 @@ def isolate_dfa(s): #removing start and end of fetched file
     newer_string = new_string.split("')])")[0]
     return newer_string
 
+def line_extruder(lines, number):
+    extruded_lines = ""
+    vector = ["(0,-1,0)", "(1,0,0)", "(0,1,0)", "(-1,0,0)"]
+    ex_old_lines = lines.replace("line_", "extrusion_weld_").replace("ug_line", "ug_extruded")
+    extrudable_lines = ex_old_lines.split("};")
+    
+    colored_lines = ""
+    c_old_lines = lines.replace("line_", "colored_weld_").replace("ug_line", "ug_body")
+    colorable_lines = c_old_lines.split("};")
+        
+    for i in range(4):
+        counter = number + i + 1
+
+        profile = "Profile, {line_" + str(counter) + ":};"
+        direction = " \n Direction, Vector" + vector[i] + ";"
+        limits = "\n Start_Limit, 0; \n End_Limit, 3;"
+        extruded_line = extrudable_lines[i].split("Start")[0] + profile + direction + limits + "\n};"     
+        extruded_lines += extruded_line
+
+        feature = " Feature, {extrusion_weld_" + str(counter) + ":};"
+        layer = "\n Layer, 1;"
+        color = "\n color, ug_askClosestColor(RED);"
+        colored_line = colorable_lines[i].split("Start")[0] + feature + layer + color + "\n};"
+        colored_lines += colored_line
+    
+    weldPath = extruded_lines + colored_lines
+    return weldPath
+
 def line_generator(length, width, originX, originY, iterator):
     counter = 4 * iterator
     dx = originX + length
     dy = originY + width
-    weldLines = "(Child) line_"+str(counter+1)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(originY)+", fZ:); \n End_Point, Point("+str(dx)+", "+str(originY)+", fZ:); \n};\n\n(Child) line_"+str(counter+2)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(originY)+", fZ:); \n End_Point, Point("+str(dx)+", "+str(dy)+", fZ:); \n};\n\n(Child) line_"+str(counter+3)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(dy)+", fZ:); \n End_Point, Point("+str(originX)+", "+str(dy)+", fZ:); \n};\n\n(Child) line_"+str(counter+4)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(dy)+", fZ:); \n End_Point, Point("+str(originX)+", "+str(originY)+", fZ:); \n};\n\n"
+    weldLines = "\n\n(Child) line_"+str(counter+1)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(originY)+", fZ:+0.1); \n End_Point, Point("+str(dx)+", "+str(originY)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+2)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(originY)+", fZ:+0.1); \n End_Point, Point("+str(dx)+", "+str(dy)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+3)+": {\n Class, ug_line; \n Start_Point, Point("+str(dx)+", "+str(dy)+", fZ:+0.1); \n End_Point, Point("+str(originX)+", "+str(dy)+", fZ:+0.1); \n};\n\n(Child) line_"+str(counter+4)+": {\n Class, ug_line; \n Start_Point, Point("+str(originX)+", "+str(dy)+", fZ:+0.1); \n End_Point, Point("+str(originX)+", "+str(originY)+", fZ:+0.1); \n};\n\n"
+    extruded_lines = line_extruder(weldLines, counter)
     fileString = ""
-    fileString += weldLines    
+    fileString += weldLines
+    fileString += extruded_lines  
     return fileString
 
 def rename(fileString): #rename the dfa file from the template name. Maybe we won't use this.
