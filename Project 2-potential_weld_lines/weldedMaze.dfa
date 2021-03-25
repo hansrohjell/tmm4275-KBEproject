@@ -1,6 +1,6 @@
 #! NX/KF 10.0
 
-DefClass: testMaze (ug_base_part);
+DefClass: weldedMaze (ug_base_part);
 (number parameter) fZ: 100;
 
 (Child) floor: {
@@ -101,26 +101,26 @@ DefClass: testMaze (ug_base_part);
 
 (Child) line_1: {
  Class, ug_line; 
- Start_Point, Point(0, 470, fZ:+0.1); 
- End_Point, Point(500, 470, fZ:+0.1); 
+ Start_Point, Point(-3, 470, fZ:+0.1); 
+ End_Point, Point(503, 470, fZ:+0.1); 
 };
 
 (Child) line_2: {
  Class, ug_line; 
- Start_Point, Point(500, 470, fZ:+0.1); 
- End_Point, Point(500, 500, fZ:+0.1); 
+ Start_Point, Point(500, 467, fZ:+0.1); 
+ End_Point, Point(500, 503, fZ:+0.1); 
 };
 
 (Child) line_3: {
  Class, ug_line; 
- Start_Point, Point(500, 500, fZ:+0.1); 
- End_Point, Point(0, 500, fZ:+0.1); 
+ Start_Point, Point(503, 500, fZ:+0.1); 
+ End_Point, Point(-3, 500, fZ:+0.1); 
 };
 
 (Child) line_4: {
  Class, ug_line; 
- Start_Point, Point(0, 500, fZ:+0.1); 
- End_Point, Point(0, 470, fZ:+0.1); 
+ Start_Point, Point(0, 503, fZ:+0.1); 
+ End_Point, Point(0, 467, fZ:+0.1); 
 };
 
 
@@ -161,52 +161,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_1:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_2: {
  Class, ug_body; 
   Feature, {extrusion_weld_2:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_3: {
  Class, ug_body; 
   Feature, {extrusion_weld_3:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_4: {
  Class, ug_body; 
   Feature, {extrusion_weld_4:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_5: {
  Class, ug_line; 
- Start_Point, Point(0, 0, fZ:+0.1); 
- End_Point, Point(30, 0, fZ:+0.1); 
+ Start_Point, Point(-3, 0, fZ:+0.1); 
+ End_Point, Point(33, 0, fZ:+0.1); 
 };
 
 (Child) line_6: {
  Class, ug_line; 
- Start_Point, Point(30, 0, fZ:+0.1); 
- End_Point, Point(30, 400, fZ:+0.1); 
+ Start_Point, Point(30, -3, fZ:+0.1); 
+ End_Point, Point(30, 403, fZ:+0.1); 
 };
 
 (Child) line_7: {
  Class, ug_line; 
- Start_Point, Point(30, 400, fZ:+0.1); 
- End_Point, Point(0, 400, fZ:+0.1); 
+ Start_Point, Point(33, 400, fZ:+0.1); 
+ End_Point, Point(-3, 400, fZ:+0.1); 
 };
 
 (Child) line_8: {
  Class, ug_line; 
- Start_Point, Point(0, 400, fZ:+0.1); 
- End_Point, Point(0, 0, fZ:+0.1); 
+ Start_Point, Point(0, 403, fZ:+0.1); 
+ End_Point, Point(0, -3, fZ:+0.1); 
 };
 
 
@@ -247,52 +247,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_5:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_6: {
  Class, ug_body; 
   Feature, {extrusion_weld_6:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_7: {
  Class, ug_body; 
   Feature, {extrusion_weld_7:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_8: {
  Class, ug_body; 
   Feature, {extrusion_weld_8:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_9: {
  Class, ug_line; 
- Start_Point, Point(30, 0, fZ:+0.1); 
- End_Point, Point(500, 0, fZ:+0.1); 
+ Start_Point, Point(27, 0, fZ:+0.1); 
+ End_Point, Point(503, 0, fZ:+0.1); 
 };
 
 (Child) line_10: {
  Class, ug_line; 
- Start_Point, Point(500, 0, fZ:+0.1); 
- End_Point, Point(500, 30, fZ:+0.1); 
+ Start_Point, Point(500, -3, fZ:+0.1); 
+ End_Point, Point(500, 33, fZ:+0.1); 
 };
 
 (Child) line_11: {
  Class, ug_line; 
- Start_Point, Point(500, 30, fZ:+0.1); 
- End_Point, Point(30, 30, fZ:+0.1); 
+ Start_Point, Point(503, 30, fZ:+0.1); 
+ End_Point, Point(27, 30, fZ:+0.1); 
 };
 
 (Child) line_12: {
  Class, ug_line; 
- Start_Point, Point(30, 30, fZ:+0.1); 
- End_Point, Point(30, 0, fZ:+0.1); 
+ Start_Point, Point(30, 33, fZ:+0.1); 
+ End_Point, Point(30, -3, fZ:+0.1); 
 };
 
 
@@ -333,52 +333,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_9:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_10: {
  Class, ug_body; 
   Feature, {extrusion_weld_10:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_11: {
  Class, ug_body; 
   Feature, {extrusion_weld_11:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_12: {
  Class, ug_body; 
   Feature, {extrusion_weld_12:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_13: {
  Class, ug_line; 
- Start_Point, Point(470, 70, fZ:+0.1); 
- End_Point, Point(500, 70, fZ:+0.1); 
+ Start_Point, Point(467, 70, fZ:+0.1); 
+ End_Point, Point(503, 70, fZ:+0.1); 
 };
 
 (Child) line_14: {
  Class, ug_line; 
- Start_Point, Point(500, 70, fZ:+0.1); 
- End_Point, Point(500, 440, fZ:+0.1); 
+ Start_Point, Point(500, 67, fZ:+0.1); 
+ End_Point, Point(500, 443, fZ:+0.1); 
 };
 
 (Child) line_15: {
  Class, ug_line; 
- Start_Point, Point(500, 440, fZ:+0.1); 
- End_Point, Point(470, 440, fZ:+0.1); 
+ Start_Point, Point(503, 440, fZ:+0.1); 
+ End_Point, Point(467, 440, fZ:+0.1); 
 };
 
 (Child) line_16: {
  Class, ug_line; 
- Start_Point, Point(470, 440, fZ:+0.1); 
- End_Point, Point(470, 70, fZ:+0.1); 
+ Start_Point, Point(470, 443, fZ:+0.1); 
+ End_Point, Point(470, 67, fZ:+0.1); 
 };
 
 
@@ -419,52 +419,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_13:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_14: {
  Class, ug_body; 
   Feature, {extrusion_weld_14:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_15: {
  Class, ug_body; 
   Feature, {extrusion_weld_15:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_16: {
  Class, ug_body; 
   Feature, {extrusion_weld_16:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_17: {
  Class, ug_line; 
- Start_Point, Point(160, 350, fZ:+0.1); 
- End_Point, Point(360, 350, fZ:+0.1); 
+ Start_Point, Point(157, 350, fZ:+0.1); 
+ End_Point, Point(363, 350, fZ:+0.1); 
 };
 
 (Child) line_18: {
  Class, ug_line; 
- Start_Point, Point(360, 350, fZ:+0.1); 
- End_Point, Point(360, 380, fZ:+0.1); 
+ Start_Point, Point(360, 347, fZ:+0.1); 
+ End_Point, Point(360, 383, fZ:+0.1); 
 };
 
 (Child) line_19: {
  Class, ug_line; 
- Start_Point, Point(360, 380, fZ:+0.1); 
- End_Point, Point(160, 380, fZ:+0.1); 
+ Start_Point, Point(363, 380, fZ:+0.1); 
+ End_Point, Point(157, 380, fZ:+0.1); 
 };
 
 (Child) line_20: {
  Class, ug_line; 
- Start_Point, Point(160, 380, fZ:+0.1); 
- End_Point, Point(160, 350, fZ:+0.1); 
+ Start_Point, Point(160, 383, fZ:+0.1); 
+ End_Point, Point(160, 347, fZ:+0.1); 
 };
 
 
@@ -505,52 +505,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_17:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_18: {
  Class, ug_body; 
   Feature, {extrusion_weld_18:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_19: {
  Class, ug_body; 
   Feature, {extrusion_weld_19:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_20: {
  Class, ug_body; 
   Feature, {extrusion_weld_20:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_21: {
  Class, ug_line; 
- Start_Point, Point(300, 150, fZ:+0.1); 
- End_Point, Point(330, 150, fZ:+0.1); 
+ Start_Point, Point(297, 150, fZ:+0.1); 
+ End_Point, Point(333, 150, fZ:+0.1); 
 };
 
 (Child) line_22: {
  Class, ug_line; 
- Start_Point, Point(330, 150, fZ:+0.1); 
- End_Point, Point(330, 350, fZ:+0.1); 
+ Start_Point, Point(330, 147, fZ:+0.1); 
+ End_Point, Point(330, 353, fZ:+0.1); 
 };
 
 (Child) line_23: {
  Class, ug_line; 
- Start_Point, Point(330, 350, fZ:+0.1); 
- End_Point, Point(300, 350, fZ:+0.1); 
+ Start_Point, Point(333, 350, fZ:+0.1); 
+ End_Point, Point(297, 350, fZ:+0.1); 
 };
 
 (Child) line_24: {
  Class, ug_line; 
- Start_Point, Point(300, 350, fZ:+0.1); 
- End_Point, Point(300, 150, fZ:+0.1); 
+ Start_Point, Point(300, 353, fZ:+0.1); 
+ End_Point, Point(300, 147, fZ:+0.1); 
 };
 
 
@@ -591,52 +591,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_21:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_22: {
  Class, ug_body; 
   Feature, {extrusion_weld_22:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_23: {
  Class, ug_body; 
   Feature, {extrusion_weld_23:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_24: {
  Class, ug_body; 
   Feature, {extrusion_weld_24:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_25: {
  Class, ug_line; 
- Start_Point, Point(100, 220, fZ:+0.1); 
- End_Point, Point(130, 220, fZ:+0.1); 
+ Start_Point, Point(97, 220, fZ:+0.1); 
+ End_Point, Point(133, 220, fZ:+0.1); 
 };
 
 (Child) line_26: {
  Class, ug_line; 
- Start_Point, Point(130, 220, fZ:+0.1); 
- End_Point, Point(130, 470, fZ:+0.1); 
+ Start_Point, Point(130, 217, fZ:+0.1); 
+ End_Point, Point(130, 473, fZ:+0.1); 
 };
 
 (Child) line_27: {
  Class, ug_line; 
- Start_Point, Point(130, 470, fZ:+0.1); 
- End_Point, Point(100, 470, fZ:+0.1); 
+ Start_Point, Point(133, 470, fZ:+0.1); 
+ End_Point, Point(97, 470, fZ:+0.1); 
 };
 
 (Child) line_28: {
  Class, ug_line; 
- Start_Point, Point(100, 470, fZ:+0.1); 
- End_Point, Point(100, 220, fZ:+0.1); 
+ Start_Point, Point(100, 473, fZ:+0.1); 
+ End_Point, Point(100, 217, fZ:+0.1); 
 };
 
 
@@ -677,52 +677,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_25:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_26: {
  Class, ug_body; 
   Feature, {extrusion_weld_26:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_27: {
  Class, ug_body; 
   Feature, {extrusion_weld_27:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_28: {
  Class, ug_body; 
   Feature, {extrusion_weld_28:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_29: {
  Class, ug_line; 
- Start_Point, Point(100, 100, fZ:+0.1); 
- End_Point, Point(400, 100, fZ:+0.1); 
+ Start_Point, Point(97, 100, fZ:+0.1); 
+ End_Point, Point(403, 100, fZ:+0.1); 
 };
 
 (Child) line_30: {
  Class, ug_line; 
- Start_Point, Point(400, 100, fZ:+0.1); 
- End_Point, Point(400, 130, fZ:+0.1); 
+ Start_Point, Point(400, 97, fZ:+0.1); 
+ End_Point, Point(400, 133, fZ:+0.1); 
 };
 
 (Child) line_31: {
  Class, ug_line; 
- Start_Point, Point(400, 130, fZ:+0.1); 
- End_Point, Point(100, 130, fZ:+0.1); 
+ Start_Point, Point(403, 130, fZ:+0.1); 
+ End_Point, Point(97, 130, fZ:+0.1); 
 };
 
 (Child) line_32: {
  Class, ug_line; 
- Start_Point, Point(100, 130, fZ:+0.1); 
- End_Point, Point(100, 100, fZ:+0.1); 
+ Start_Point, Point(100, 133, fZ:+0.1); 
+ End_Point, Point(100, 97, fZ:+0.1); 
 };
 
 
@@ -763,52 +763,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_29:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_30: {
  Class, ug_body; 
   Feature, {extrusion_weld_30:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_31: {
  Class, ug_body; 
   Feature, {extrusion_weld_31:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_32: {
  Class, ug_body; 
   Feature, {extrusion_weld_32:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_33: {
  Class, ug_line; 
- Start_Point, Point(150, 130, fZ:+0.1); 
- End_Point, Point(180, 130, fZ:+0.1); 
+ Start_Point, Point(147, 130, fZ:+0.1); 
+ End_Point, Point(183, 130, fZ:+0.1); 
 };
 
 (Child) line_34: {
  Class, ug_line; 
- Start_Point, Point(180, 130, fZ:+0.1); 
- End_Point, Point(180, 280, fZ:+0.1); 
+ Start_Point, Point(180, 127, fZ:+0.1); 
+ End_Point, Point(180, 283, fZ:+0.1); 
 };
 
 (Child) line_35: {
  Class, ug_line; 
- Start_Point, Point(180, 280, fZ:+0.1); 
- End_Point, Point(150, 280, fZ:+0.1); 
+ Start_Point, Point(183, 280, fZ:+0.1); 
+ End_Point, Point(147, 280, fZ:+0.1); 
 };
 
 (Child) line_36: {
  Class, ug_line; 
- Start_Point, Point(150, 280, fZ:+0.1); 
- End_Point, Point(150, 130, fZ:+0.1); 
+ Start_Point, Point(150, 283, fZ:+0.1); 
+ End_Point, Point(150, 127, fZ:+0.1); 
 };
 
 
@@ -849,52 +849,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_33:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_34: {
  Class, ug_body; 
   Feature, {extrusion_weld_34:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_35: {
  Class, ug_body; 
   Feature, {extrusion_weld_35:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_36: {
  Class, ug_body; 
   Feature, {extrusion_weld_36:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_37: {
  Class, ug_line; 
- Start_Point, Point(350, 250, fZ:+0.1); 
- End_Point, Point(450, 250, fZ:+0.1); 
+ Start_Point, Point(347, 250, fZ:+0.1); 
+ End_Point, Point(453, 250, fZ:+0.1); 
 };
 
 (Child) line_38: {
  Class, ug_line; 
- Start_Point, Point(450, 250, fZ:+0.1); 
- End_Point, Point(450, 280, fZ:+0.1); 
+ Start_Point, Point(450, 247, fZ:+0.1); 
+ End_Point, Point(450, 283, fZ:+0.1); 
 };
 
 (Child) line_39: {
  Class, ug_line; 
- Start_Point, Point(450, 280, fZ:+0.1); 
- End_Point, Point(350, 280, fZ:+0.1); 
+ Start_Point, Point(453, 280, fZ:+0.1); 
+ End_Point, Point(347, 280, fZ:+0.1); 
 };
 
 (Child) line_40: {
  Class, ug_line; 
- Start_Point, Point(350, 280, fZ:+0.1); 
- End_Point, Point(350, 250, fZ:+0.1); 
+ Start_Point, Point(350, 283, fZ:+0.1); 
+ End_Point, Point(350, 247, fZ:+0.1); 
 };
 
 
@@ -935,52 +935,52 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_37:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_38: {
  Class, ug_body; 
   Feature, {extrusion_weld_38:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_39: {
  Class, ug_body; 
   Feature, {extrusion_weld_39:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_40: {
  Class, ug_body; 
   Feature, {extrusion_weld_40:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) line_41: {
  Class, ug_line; 
- Start_Point, Point(250, 30, fZ:+0.1); 
- End_Point, Point(280, 30, fZ:+0.1); 
+ Start_Point, Point(247, 30, fZ:+0.1); 
+ End_Point, Point(283, 30, fZ:+0.1); 
 };
 
 (Child) line_42: {
  Class, ug_line; 
- Start_Point, Point(280, 30, fZ:+0.1); 
- End_Point, Point(280, 100, fZ:+0.1); 
+ Start_Point, Point(280, 27, fZ:+0.1); 
+ End_Point, Point(280, 103, fZ:+0.1); 
 };
 
 (Child) line_43: {
  Class, ug_line; 
- Start_Point, Point(280, 100, fZ:+0.1); 
- End_Point, Point(250, 100, fZ:+0.1); 
+ Start_Point, Point(283, 100, fZ:+0.1); 
+ End_Point, Point(247, 100, fZ:+0.1); 
 };
 
 (Child) line_44: {
  Class, ug_line; 
- Start_Point, Point(250, 100, fZ:+0.1); 
- End_Point, Point(250, 30, fZ:+0.1); 
+ Start_Point, Point(250, 103, fZ:+0.1); 
+ End_Point, Point(250, 27, fZ:+0.1); 
 };
 
 
@@ -1021,26 +1021,26 @@ DefClass: testMaze (ug_base_part);
  Class, ug_body; 
   Feature, {extrusion_weld_41:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_42: {
  Class, ug_body; 
   Feature, {extrusion_weld_42:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_43: {
  Class, ug_body; 
   Feature, {extrusion_weld_43:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
 
 (Child) colored_weld_44: {
  Class, ug_body; 
   Feature, {extrusion_weld_44:};
  Layer, 1;
- color, ug_askClosestColor(RED);
+ color, ug_askClosestColor(DARK_DULL_GREEN);
 };
