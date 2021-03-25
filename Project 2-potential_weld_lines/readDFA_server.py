@@ -161,7 +161,7 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             self.send_header("Content-type", "text/html")
             self.end_headers()
             self.write_HTML_file(userinterface_file)
-        """
+            """
         elif(self.path == '/theMaze.png') != -1:
             self.send_response(200)
             self.send_header("Content-type", "image/png")
@@ -169,7 +169,7 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             bReader = open(image_file, "rb")
             theImg = bReader.read()
             self.wfile.write(theImg)
-        """
+            """
         else:
             self.send_response(404)
             self.end_headers()
