@@ -97,267 +97,950 @@ DefClass: testMaze (ug_base_part);
  height, fZ:; 
  origin, Point(250,30,fZ:); 
 }; 
+
+
 (Child) line_1: {
  Class, ug_line; 
- Start_Point, Point(0, 470, fZ:); 
- End_Point, Point(500, 470, fZ:); 
+ Start_Point, Point(0, 470, fZ:+0.1); 
+ End_Point, Point(500, 470, fZ:+0.1); 
 };
 
 (Child) line_2: {
  Class, ug_line; 
- Start_Point, Point(500, 470, fZ:); 
- End_Point, Point(500, 500, fZ:); 
+ Start_Point, Point(500, 470, fZ:+0.1); 
+ End_Point, Point(500, 500, fZ:+0.1); 
 };
 
 (Child) line_3: {
  Class, ug_line; 
- Start_Point, Point(500, 500, fZ:); 
- End_Point, Point(0, 500, fZ:); 
+ Start_Point, Point(500, 500, fZ:+0.1); 
+ End_Point, Point(0, 500, fZ:+0.1); 
 };
 
 (Child) line_4: {
  Class, ug_line; 
- Start_Point, Point(0, 500, fZ:); 
- End_Point, Point(0, 470, fZ:); 
+ Start_Point, Point(0, 500, fZ:+0.1); 
+ End_Point, Point(0, 470, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_1: {
+ Class, ug_extruded; 
+ Profile, {line_1:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_2: {
+ Class, ug_extruded; 
+ Profile, {line_2:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_3: {
+ Class, ug_extruded; 
+ Profile, {line_3:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_4: {
+ Class, ug_extruded; 
+ Profile, {line_4:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_1: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_1:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_2: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_2:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_3: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_3:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_4: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_4:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_5: {
  Class, ug_line; 
- Start_Point, Point(0, 0, fZ:); 
- End_Point, Point(30, 0, fZ:); 
+ Start_Point, Point(0, 0, fZ:+0.1); 
+ End_Point, Point(30, 0, fZ:+0.1); 
 };
 
 (Child) line_6: {
  Class, ug_line; 
- Start_Point, Point(30, 0, fZ:); 
- End_Point, Point(30, 400, fZ:); 
+ Start_Point, Point(30, 0, fZ:+0.1); 
+ End_Point, Point(30, 400, fZ:+0.1); 
 };
 
 (Child) line_7: {
  Class, ug_line; 
- Start_Point, Point(30, 400, fZ:); 
- End_Point, Point(0, 400, fZ:); 
+ Start_Point, Point(30, 400, fZ:+0.1); 
+ End_Point, Point(0, 400, fZ:+0.1); 
 };
 
 (Child) line_8: {
  Class, ug_line; 
- Start_Point, Point(0, 400, fZ:); 
- End_Point, Point(0, 0, fZ:); 
+ Start_Point, Point(0, 400, fZ:+0.1); 
+ End_Point, Point(0, 0, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_5: {
+ Class, ug_extruded; 
+ Profile, {line_5:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_6: {
+ Class, ug_extruded; 
+ Profile, {line_6:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_7: {
+ Class, ug_extruded; 
+ Profile, {line_7:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_8: {
+ Class, ug_extruded; 
+ Profile, {line_8:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_5: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_5:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_6: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_6:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_7: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_7:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_8: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_8:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_9: {
  Class, ug_line; 
- Start_Point, Point(30, 0, fZ:); 
- End_Point, Point(500, 0, fZ:); 
+ Start_Point, Point(30, 0, fZ:+0.1); 
+ End_Point, Point(500, 0, fZ:+0.1); 
 };
 
 (Child) line_10: {
  Class, ug_line; 
- Start_Point, Point(500, 0, fZ:); 
- End_Point, Point(500, 30, fZ:); 
+ Start_Point, Point(500, 0, fZ:+0.1); 
+ End_Point, Point(500, 30, fZ:+0.1); 
 };
 
 (Child) line_11: {
  Class, ug_line; 
- Start_Point, Point(500, 30, fZ:); 
- End_Point, Point(30, 30, fZ:); 
+ Start_Point, Point(500, 30, fZ:+0.1); 
+ End_Point, Point(30, 30, fZ:+0.1); 
 };
 
 (Child) line_12: {
  Class, ug_line; 
- Start_Point, Point(30, 30, fZ:); 
- End_Point, Point(30, 0, fZ:); 
+ Start_Point, Point(30, 30, fZ:+0.1); 
+ End_Point, Point(30, 0, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_9: {
+ Class, ug_extruded; 
+ Profile, {line_9:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_10: {
+ Class, ug_extruded; 
+ Profile, {line_10:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_11: {
+ Class, ug_extruded; 
+ Profile, {line_11:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_12: {
+ Class, ug_extruded; 
+ Profile, {line_12:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_9: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_9:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_10: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_10:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_11: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_11:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_12: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_12:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_13: {
  Class, ug_line; 
- Start_Point, Point(470, 70, fZ:); 
- End_Point, Point(500, 70, fZ:); 
+ Start_Point, Point(470, 70, fZ:+0.1); 
+ End_Point, Point(500, 70, fZ:+0.1); 
 };
 
 (Child) line_14: {
  Class, ug_line; 
- Start_Point, Point(500, 70, fZ:); 
- End_Point, Point(500, 440, fZ:); 
+ Start_Point, Point(500, 70, fZ:+0.1); 
+ End_Point, Point(500, 440, fZ:+0.1); 
 };
 
 (Child) line_15: {
  Class, ug_line; 
- Start_Point, Point(500, 440, fZ:); 
- End_Point, Point(470, 440, fZ:); 
+ Start_Point, Point(500, 440, fZ:+0.1); 
+ End_Point, Point(470, 440, fZ:+0.1); 
 };
 
 (Child) line_16: {
  Class, ug_line; 
- Start_Point, Point(470, 440, fZ:); 
- End_Point, Point(470, 70, fZ:); 
+ Start_Point, Point(470, 440, fZ:+0.1); 
+ End_Point, Point(470, 70, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_13: {
+ Class, ug_extruded; 
+ Profile, {line_13:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_14: {
+ Class, ug_extruded; 
+ Profile, {line_14:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_15: {
+ Class, ug_extruded; 
+ Profile, {line_15:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_16: {
+ Class, ug_extruded; 
+ Profile, {line_16:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_13: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_13:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_14: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_14:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_15: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_15:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_16: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_16:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_17: {
  Class, ug_line; 
- Start_Point, Point(160, 350, fZ:); 
- End_Point, Point(360, 350, fZ:); 
+ Start_Point, Point(160, 350, fZ:+0.1); 
+ End_Point, Point(360, 350, fZ:+0.1); 
 };
 
 (Child) line_18: {
  Class, ug_line; 
- Start_Point, Point(360, 350, fZ:); 
- End_Point, Point(360, 380, fZ:); 
+ Start_Point, Point(360, 350, fZ:+0.1); 
+ End_Point, Point(360, 380, fZ:+0.1); 
 };
 
 (Child) line_19: {
  Class, ug_line; 
- Start_Point, Point(360, 380, fZ:); 
- End_Point, Point(160, 380, fZ:); 
+ Start_Point, Point(360, 380, fZ:+0.1); 
+ End_Point, Point(160, 380, fZ:+0.1); 
 };
 
 (Child) line_20: {
  Class, ug_line; 
- Start_Point, Point(160, 380, fZ:); 
- End_Point, Point(160, 350, fZ:); 
+ Start_Point, Point(160, 380, fZ:+0.1); 
+ End_Point, Point(160, 350, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_17: {
+ Class, ug_extruded; 
+ Profile, {line_17:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_18: {
+ Class, ug_extruded; 
+ Profile, {line_18:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_19: {
+ Class, ug_extruded; 
+ Profile, {line_19:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_20: {
+ Class, ug_extruded; 
+ Profile, {line_20:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_17: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_17:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_18: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_18:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_19: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_19:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_20: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_20:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_21: {
  Class, ug_line; 
- Start_Point, Point(300, 150, fZ:); 
- End_Point, Point(330, 150, fZ:); 
+ Start_Point, Point(300, 150, fZ:+0.1); 
+ End_Point, Point(330, 150, fZ:+0.1); 
 };
 
 (Child) line_22: {
  Class, ug_line; 
- Start_Point, Point(330, 150, fZ:); 
- End_Point, Point(330, 350, fZ:); 
+ Start_Point, Point(330, 150, fZ:+0.1); 
+ End_Point, Point(330, 350, fZ:+0.1); 
 };
 
 (Child) line_23: {
  Class, ug_line; 
- Start_Point, Point(330, 350, fZ:); 
- End_Point, Point(300, 350, fZ:); 
+ Start_Point, Point(330, 350, fZ:+0.1); 
+ End_Point, Point(300, 350, fZ:+0.1); 
 };
 
 (Child) line_24: {
  Class, ug_line; 
- Start_Point, Point(300, 350, fZ:); 
- End_Point, Point(300, 150, fZ:); 
+ Start_Point, Point(300, 350, fZ:+0.1); 
+ End_Point, Point(300, 150, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_21: {
+ Class, ug_extruded; 
+ Profile, {line_21:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_22: {
+ Class, ug_extruded; 
+ Profile, {line_22:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_23: {
+ Class, ug_extruded; 
+ Profile, {line_23:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_24: {
+ Class, ug_extruded; 
+ Profile, {line_24:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_21: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_21:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_22: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_22:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_23: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_23:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_24: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_24:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_25: {
  Class, ug_line; 
- Start_Point, Point(100, 220, fZ:); 
- End_Point, Point(130, 220, fZ:); 
+ Start_Point, Point(100, 220, fZ:+0.1); 
+ End_Point, Point(130, 220, fZ:+0.1); 
 };
 
 (Child) line_26: {
  Class, ug_line; 
- Start_Point, Point(130, 220, fZ:); 
- End_Point, Point(130, 470, fZ:); 
+ Start_Point, Point(130, 220, fZ:+0.1); 
+ End_Point, Point(130, 470, fZ:+0.1); 
 };
 
 (Child) line_27: {
  Class, ug_line; 
- Start_Point, Point(130, 470, fZ:); 
- End_Point, Point(100, 470, fZ:); 
+ Start_Point, Point(130, 470, fZ:+0.1); 
+ End_Point, Point(100, 470, fZ:+0.1); 
 };
 
 (Child) line_28: {
  Class, ug_line; 
- Start_Point, Point(100, 470, fZ:); 
- End_Point, Point(100, 220, fZ:); 
+ Start_Point, Point(100, 470, fZ:+0.1); 
+ End_Point, Point(100, 220, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_25: {
+ Class, ug_extruded; 
+ Profile, {line_25:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_26: {
+ Class, ug_extruded; 
+ Profile, {line_26:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_27: {
+ Class, ug_extruded; 
+ Profile, {line_27:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_28: {
+ Class, ug_extruded; 
+ Profile, {line_28:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_25: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_25:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_26: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_26:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_27: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_27:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_28: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_28:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_29: {
  Class, ug_line; 
- Start_Point, Point(100, 100, fZ:); 
- End_Point, Point(400, 100, fZ:); 
+ Start_Point, Point(100, 100, fZ:+0.1); 
+ End_Point, Point(400, 100, fZ:+0.1); 
 };
 
 (Child) line_30: {
  Class, ug_line; 
- Start_Point, Point(400, 100, fZ:); 
- End_Point, Point(400, 130, fZ:); 
+ Start_Point, Point(400, 100, fZ:+0.1); 
+ End_Point, Point(400, 130, fZ:+0.1); 
 };
 
 (Child) line_31: {
  Class, ug_line; 
- Start_Point, Point(400, 130, fZ:); 
- End_Point, Point(100, 130, fZ:); 
+ Start_Point, Point(400, 130, fZ:+0.1); 
+ End_Point, Point(100, 130, fZ:+0.1); 
 };
 
 (Child) line_32: {
  Class, ug_line; 
- Start_Point, Point(100, 130, fZ:); 
- End_Point, Point(100, 100, fZ:); 
+ Start_Point, Point(100, 130, fZ:+0.1); 
+ End_Point, Point(100, 100, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_29: {
+ Class, ug_extruded; 
+ Profile, {line_29:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_30: {
+ Class, ug_extruded; 
+ Profile, {line_30:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_31: {
+ Class, ug_extruded; 
+ Profile, {line_31:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_32: {
+ Class, ug_extruded; 
+ Profile, {line_32:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_29: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_29:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_30: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_30:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_31: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_31:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_32: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_32:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_33: {
  Class, ug_line; 
- Start_Point, Point(150, 130, fZ:); 
- End_Point, Point(180, 130, fZ:); 
+ Start_Point, Point(150, 130, fZ:+0.1); 
+ End_Point, Point(180, 130, fZ:+0.1); 
 };
 
 (Child) line_34: {
  Class, ug_line; 
- Start_Point, Point(180, 130, fZ:); 
- End_Point, Point(180, 280, fZ:); 
+ Start_Point, Point(180, 130, fZ:+0.1); 
+ End_Point, Point(180, 280, fZ:+0.1); 
 };
 
 (Child) line_35: {
  Class, ug_line; 
- Start_Point, Point(180, 280, fZ:); 
- End_Point, Point(150, 280, fZ:); 
+ Start_Point, Point(180, 280, fZ:+0.1); 
+ End_Point, Point(150, 280, fZ:+0.1); 
 };
 
 (Child) line_36: {
  Class, ug_line; 
- Start_Point, Point(150, 280, fZ:); 
- End_Point, Point(150, 130, fZ:); 
+ Start_Point, Point(150, 280, fZ:+0.1); 
+ End_Point, Point(150, 130, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_33: {
+ Class, ug_extruded; 
+ Profile, {line_33:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_34: {
+ Class, ug_extruded; 
+ Profile, {line_34:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_35: {
+ Class, ug_extruded; 
+ Profile, {line_35:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_36: {
+ Class, ug_extruded; 
+ Profile, {line_36:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_33: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_33:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_34: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_34:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_35: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_35:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_36: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_36:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_37: {
  Class, ug_line; 
- Start_Point, Point(350, 250, fZ:); 
- End_Point, Point(450, 250, fZ:); 
+ Start_Point, Point(350, 250, fZ:+0.1); 
+ End_Point, Point(450, 250, fZ:+0.1); 
 };
 
 (Child) line_38: {
  Class, ug_line; 
- Start_Point, Point(450, 250, fZ:); 
- End_Point, Point(450, 280, fZ:); 
+ Start_Point, Point(450, 250, fZ:+0.1); 
+ End_Point, Point(450, 280, fZ:+0.1); 
 };
 
 (Child) line_39: {
  Class, ug_line; 
- Start_Point, Point(450, 280, fZ:); 
- End_Point, Point(350, 280, fZ:); 
+ Start_Point, Point(450, 280, fZ:+0.1); 
+ End_Point, Point(350, 280, fZ:+0.1); 
 };
 
 (Child) line_40: {
  Class, ug_line; 
- Start_Point, Point(350, 280, fZ:); 
- End_Point, Point(350, 250, fZ:); 
+ Start_Point, Point(350, 280, fZ:+0.1); 
+ End_Point, Point(350, 250, fZ:+0.1); 
+};
+
+
+
+(Child) extrusion_weld_37: {
+ Class, ug_extruded; 
+ Profile, {line_37:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_38: {
+ Class, ug_extruded; 
+ Profile, {line_38:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_39: {
+ Class, ug_extruded; 
+ Profile, {line_39:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_40: {
+ Class, ug_extruded; 
+ Profile, {line_40:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_37: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_37:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_38: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_38:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_39: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_39:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_40: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_40:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
 };
 
 (Child) line_41: {
  Class, ug_line; 
- Start_Point, Point(250, 30, fZ:); 
- End_Point, Point(280, 30, fZ:); 
+ Start_Point, Point(250, 30, fZ:+0.1); 
+ End_Point, Point(280, 30, fZ:+0.1); 
 };
 
 (Child) line_42: {
  Class, ug_line; 
- Start_Point, Point(280, 30, fZ:); 
- End_Point, Point(280, 100, fZ:); 
+ Start_Point, Point(280, 30, fZ:+0.1); 
+ End_Point, Point(280, 100, fZ:+0.1); 
 };
 
 (Child) line_43: {
  Class, ug_line; 
- Start_Point, Point(280, 100, fZ:); 
- End_Point, Point(250, 100, fZ:); 
+ Start_Point, Point(280, 100, fZ:+0.1); 
+ End_Point, Point(250, 100, fZ:+0.1); 
 };
 
 (Child) line_44: {
  Class, ug_line; 
- Start_Point, Point(250, 100, fZ:); 
- End_Point, Point(250, 30, fZ:); 
+ Start_Point, Point(250, 100, fZ:+0.1); 
+ End_Point, Point(250, 30, fZ:+0.1); 
 };
 
+
+
+(Child) extrusion_weld_41: {
+ Class, ug_extruded; 
+ Profile, {line_41:}; 
+ Direction, Vector(0,-1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_42: {
+ Class, ug_extruded; 
+ Profile, {line_42:}; 
+ Direction, Vector(1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_43: {
+ Class, ug_extruded; 
+ Profile, {line_43:}; 
+ Direction, Vector(0,1,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) extrusion_weld_44: {
+ Class, ug_extruded; 
+ Profile, {line_44:}; 
+ Direction, Vector(-1,0,0);
+ Start_Limit, 0; 
+ End_Limit, 3;
+};
+
+(Child) colored_weld_41: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_41:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_42: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_42:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_43: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_43:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};
+
+(Child) colored_weld_44: {
+ Class, ug_body; 
+  Feature, {extrusion_weld_44:};
+ Layer, 1;
+ color, ug_askClosestColor(RED);
+};

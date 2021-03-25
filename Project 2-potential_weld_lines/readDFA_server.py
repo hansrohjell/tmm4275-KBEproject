@@ -73,10 +73,10 @@ def rename(fileString): #rename the dfa file from the template name. Maybe we wo
 def read_DFA(dfa_template): #reading the uploaded dfa file and writing to a new file.
     s = dfa_template.replace('\\r', '')
     s = s.replace('\\n', '\n')
-    #s = rename(s)
+    s = rename(s)
 
     file = open("weldedMaze.dfa", "w")
-
+    # Splitting the file in lines to get the values from the blocks in the maze.
     walls = s.split("\n\n")
     i = 0
     while i < (len(walls) - 3):
@@ -161,7 +161,7 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             self.send_header("Content-type", "text/html")
             self.end_headers()
             self.write_HTML_file(userinterface_file)
-
+        """
         elif(self.path == '/theMaze.png') != -1:
             self.send_response(200)
             self.send_header("Content-type", "image/png")
@@ -169,7 +169,7 @@ class MyHandler(BaseHTTPRequestHandler): #the server
             bReader = open(image_file, "rb")
             theImg = bReader.read()
             self.wfile.write(theImg)
-
+        """
         else:
             self.send_response(404)
             self.end_headers()
