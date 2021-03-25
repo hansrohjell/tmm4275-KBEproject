@@ -1,0 +1,131 @@
+#! NX/KF 10.0
+
+DefClass: inputMaze3 (ug_base_part);
+(number parameter) fZ: 10;
+
+(Child) floor: {
+ Class, ug_block; 
+ Length, 500; 
+ width, 500; 
+ height, fZ:; 
+}; 
+
+(Child) wall1: {
+ Class, ug_block; 
+ Length, 450; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(50,0,fZ:); 
+}; 
+
+(Child) wall2: {
+ Class, ug_block; 
+ Length, 15; 
+ width, 500; 
+ height, 5*fZ:; 
+ origin, Point(0,0,fZ:); 
+};
+
+(Child) wall3: {
+ Class, ug_block; 
+ Length, 435; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(15,485,fZ:); 
+};  
+
+(Child) wall4: {
+ Class, ug_block; 
+ Length, 15; 
+ width, 485; 
+ height, 5*fZ:; 
+ origin, Point(485,15,fZ:); 
+}; 
+
+(Child) wall5: {
+ Class, ug_block; 
+ Length, 15; 
+ width, 400; 
+ height, 5*fZ:; 
+ origin, Point(50,15,fZ:); 
+}; 
+
+(Child) wall6: {
+ Class, ug_block; 
+ Length, 350; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(50,415,fZ:); 
+}; 
+
+(Child) wall7: {
+ Class, ug_block; 
+ Length, 15; 
+ width, 350; 
+ height, 5*fZ:; 
+ origin, Point(435,135,fZ:); 
+}; 
+
+(Child) wall8: {
+ Class, ug_block; 
+ Length, 300; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(185,85,fZ:); 
+}; 
+
+(Child) wall9: {
+ Class, ug_block; 
+ Length, 300; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(135,350,fZ:); 
+}; 
+
+(Child) wall10: {
+ Class, ug_block; 
+ Length, 100; 
+ width, 100; 
+ height, 5*fZ:; 
+ origin, Point(200,200,fZ:); 
+}; 
+
+(Child) wall11: {
+ Class, ug_block; 
+ Length, 100; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(65,250,fZ:); 
+}; 
+
+(Child) wall12: {
+ Class, ug_block; 
+ Length, 300; 
+ width, 50; 
+ height, 5*fZ:; 
+ origin, Point(100,125,fZ:); 
+}; 
+
+(Child) wall13: {
+ Class, ug_block; 
+ Length, 15; 
+ width, 100; 
+ height, 5*fZ:; 
+ origin, Point(385,225,fZ:); 
+}; 
+
+(Child) wall14: {
+ Class, ug_block; 
+ Length, 100; 
+ width, 15; 
+ height, 5*fZ:; 
+ origin, Point(335,210,fZ:); 
+}; 
+
+(Child) wall15: {
+ Class, ug_block; 
+ Length, 15; 
+ width, 85; 
+ height, 5*fZ:; 
+ origin, Point(125,15,fZ:); 
+}; 
