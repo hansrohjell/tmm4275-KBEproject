@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TKS Railway system manager</title>
+</head>
+
+
+<body>
+    <h2>TKS Railway System Generator</h2>
+    <form action="/orderRailwaySys" method="post">
+
+        <h3>Input information for the railway system: </h3>
+        <label for="start_point">Set starting point [x, y]:</label><br>
+        <input type="text" id="start_point" name="start_point" value="0,0"><br><br>
+
+        <label for="end_point">Set ending point [x, y]:</label><br>
+        <input type="text" id="end_point" name="end_point" value="0,0"><br><br>
+
+        <label for="chair_width">Set grid width:</label><br>
+        <input type="text" id="grid_width" name="grid_width" value="100"><br><br>
+
+        <label for="seat_height">Set grid length:</label><br>
+        <input type="text" id="grid_length" name="grid_length" value="100"><br><br>
+
+        <input type="submit" value="Submit values">
+    </form>
+
+    <form action="/orderRailway">
+        <h3> Add obstacles</h3>
+        <label for="obstacle_position">Set position [x, y]:</label><br>
+        <input type="text" id="obstacle_position" name="obstacle_position" value="0,0"><br><br>
+
+        <label for="obstacle_width">Set obstacle width:</label><br>
+        <input type="text" id="obstacle_width" name="obstacle_width" value="0"><br><br>
+
+        <label for="obstacle_length">Set obstacle length:</label><br>
+        <input type="text" id="obstacle_length" name="obstacle_length" value="0"><br><br>
+
+        <input type="submit" value="Add obstacle">
+
+    </form>
+
+    <form action="/orderRailway">
+        <h3> Add feeding lines</h3>
+        <label for="feeding_start">Set starting point [x, y]:</label><br>
+        <input type="text" id="feeding_start" name="feeding_start" value="0,0"><br><br>
+
+        <label for="feeding_end">Set ending point [x, y]:</label><br>
+        <input type="text" id="feeding_end" name="feeding_end" value="0,0"><br><br>
+
+        <input type="submit" value="Add feeding line">
+
+    </form>
+
+
+</body>
+
+</html>
