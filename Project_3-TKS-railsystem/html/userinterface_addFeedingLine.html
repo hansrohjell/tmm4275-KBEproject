@@ -39,9 +39,10 @@
 
         <input type="submit" value="Add obstacle" >
 
+
     </form>
 
-    <form action="/addFeedingLine" method= "post">
+    <form action="/addFeedingLine" method= "post" onsubmit= "return 1">
         <h3> Add feeding lines</h3>
         <label for="feeding_start">Set starting point [x, y]:</label><br>
         <input type="text" id="feeding_start" name="feeding_start" value="0,0"><br><br>
@@ -50,6 +51,8 @@
         <input type="text" id="feeding_end" name="feeding_end" value="0,0"><br><br>
 
         <input type="submit" value="Add feeding line">
+
+        Feedingline added
 
     </form>
 

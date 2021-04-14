@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from os import write
 import re
 from pathlib import Path
 import math
@@ -16,6 +17,8 @@ userinterface_file = Path("html/userinterface.html")
 userinterface_error = Path("tmp/userinterface_error.html")
 userinterface_tmp = Path("tmp/userinterface_tmp.html")
 userinterface_order = Path("tmp/userinterface_order.html")
+userinterface_addObstacle = Path("html/userinterface_addObstacle.html")
+userinterface_addFeedingLine = Path("html/userinterface_addFeedingLine.html")
 #image_file = Path("theProduct.png")
 """
 variable_to_DFA = {
@@ -132,6 +135,15 @@ def lock_and_order(filename):
         file.write(data)
         file.truncate()
 
+def update_feedingLines(starting_point, ending_point):
+   #TODO: Oppdatere dict med feedinglines
+    pass
+
+def update_obstacles(position, width, length):
+    #TODO: Oppdatere dict med obstacles
+    pass
+
+
 
 # def set_error_message(min, max, variable, error_filename):
 #       # Sets the default values in html file
@@ -180,6 +192,19 @@ class MyHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.write_HTML_file(userinterface_file)
         
+        elif self.path.find('/addObstacle'):
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.write_HTML_file(userinterface_file)
+        elif self.path.find('/addFeedingLine'):
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.write_HTML_file(userinterface_file)
+        
+
+        
         else:
             self.send_response(404)
             self.end_headers()
@@ -192,13 +217,14 @@ class MyHandler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-        if self.path.find("/orderRailSys") != -1:
+        if self.path.find("/orderRailwaySys") != -1:
             # Get the paramters
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
             param_line = post_body.decode()
             params = parse_parameters(param_line)
-
+            print(param_line)
+            self.write_HTML_file(userinterface_file)
             # Update values in html files from param
             update_defaults(userinterface_file,
                             userinterface_tmp,
@@ -211,9 +237,10 @@ class MyHandler(BaseHTTPRequestHandler):
                             params)
 
             # Check for illegal parameter
-            not_producible, error_message = producibilityCheck(params)
+            #not_producible, error_message = producibilityCheck(params)
 
             # html interface to show
+            """
             if not_producible:
                 # Add error message to html
                 add_error_messages(error_message, userinterface_error)
@@ -221,8 +248,28 @@ class MyHandler(BaseHTTPRequestHandler):
 
                 lock_and_order(userinterface_order)
                 self.write_HTML_file(userinterface_order)
- 
+            """
+        elif self.path.find("/addFeedingLine"):
+            content_len = int(self.headers.get('Content-Length'))
+            post_body = self.rfile.read(content_len)
+            param_line = post_body.decode()
+            params = parse_parameters(param_line)
+            print(param_line)
+            #TODO: Bruk update_feedingLine til å oppdatere dict med verdier for en feedingline.
+            self.write_HTML_file(userinterface_addFeedingLine)
 
+        elif self.path.find("/addObstacle"):
+            content_len = int(self.headers.get('Content-Length'))
+            post_body = self.rfile.read(content_len)
+            param_line = post_body.decode()
+            params = parse_parameters(param_line)
+            print(param_line)
+            #TODO: Bruk update_feedingline til å oppdatere dict med verdier for en obstacle
+            self.write_HTML_file(userinterface_addObstacle)
+
+
+
+        """
         elif self.path.find("/submitGrid") != -1:
             # Get the paramters
             content_len = int(self.headers.get('Content-Length'))
@@ -243,7 +290,7 @@ class MyHandler(BaseHTTPRequestHandler):
             # self.wfile.write(bytes('<img src="theProduct.png" alt="The product comes here" width="800" height="420">', 'utf-8'))
         elif self.path.find("/changeChair") != -1:
             self.write_HTML_file(userinterface_tmp)
-
+"""
 
 if __name__ == '__main__':
     server_class = HTTPServer
