@@ -25,7 +25,7 @@ variable_to_DFA = {
     # Rail system
     "start_point": "0,0",
     "end_point": "0,0",    
-    "grid_width": "100",
+    "grid_width": "100", # Disse må være >>100 for å passe bjelkens dimensjoner
     "grid_length": "100",
 
     # Obstacle
@@ -35,7 +35,10 @@ variable_to_DFA = {
 
     # Feeding rail
     "feeding_start": [],
-    "feeding_stop": []
+    "feeding_stop": [],
+    
+    # Rail path - legger til elementer her ettersom rail-pathen forlenges, alle delene blir satt sammen og bygget opp som et I-profil
+    "rail_path": ["rail_path_1"]
 }
 
 def reload_nx():
@@ -155,9 +158,23 @@ def update_rail_system(parameter_string):
 
     variable_to_DFA["grid_width"] = parameter_string.split('grid_width=')[1].split('&')[0]
     variable_to_DFA["grid_length"] = parameter_string.split('grid_length=')[1]
+    
+    initial_lines = "#! NX/KF 10.0\n\nDefClass: dfa_test (ug_base_part);\n\n"
+    parameters = "(number parameter) rail_width: 167;\n(number parameter) rail_height: 291;\n(number parameter) rail_base_height: 11.17;\n(number parameter) rail_wall_width: 6.6;\n(number parameter) x: -rail_width:/2;\n(number parameter) y: 0;\n(number parameter) z: 0;\n\n"
+    lines = "(Child) line_1: {\n Class, ug_line;\n Start_Point, Point(x:,y:,z:);\n End_Point, Point(x:+rail_width:,y:,z:);\n};\n\n(Child) line_2: {\n Class, ug_line;\n Start_Point, Point(x:+rail_width:,y:,z:);\n End_Point, Point(x:+rail_width:,y:,z:+rail_base_height:);\n};\n\n(Child) line_3: {\n Class, ug_line;\n Start_Point, Point(x:+rail_width:,y:,z:+rail_base_height:);\n End_Point, Point(x:+(rail_width:/2)+(rail_wall_width:/2),y:,z:+rail_base_height:);\n};\n\n(Child) line_4: {\n Class, ug_line;\n Start_Point, Point(x:+(rail_width:/2)+(rail_wall_width:/2),y:,z:+rail_base_height:);\n End_Point, Point(x:+(rail_width:/2)+(rail_wall_width:/2),y:,z:+rail_base_height:+rail_height:);\n};\n\n(Child) line_5: {\n Class, ug_line;\n Start_Point, Point(x:+(rail_width:/2)+(rail_wall_width:/2),y:,z:+rail_base_height:+rail_height:);\n End_Point, Point(x:+rail_width:,y:,z:+rail_base_height:+rail_height:);\n};\n\n(Child) line_6: {\n Class, ug_line;\n Start_Point, Point(x:+rail_width:,y:,z:+rail_base_height:+rail_height:);\n End_Point, Point(x:+rail_width:,y:,z:+(rail_base_height:*2)+rail_height:);\n};\n\n(Child) line_7: {\n Class, ug_line;\n Start_Point, Point(x:+rail_width:,y:,z:+(rail_base_height:*2)+rail_height:);\n End_Point, Point(x:,y:,z:+(rail_base_height:*2)+rail_height:);\n};\n\n(Child) line_8: {\n Class, ug_line;\n Start_Point, Point(x:,y:,z:+rail_base_height:*2+rail_height:);\n End_Point, Point(x:,y:,z:+rail_base_height:+rail_height:);\n};\n\n(Child) line_9: {\n Class, ug_line;\n Start_Point, Point(x:,y:,z:+rail_base_height:+rail_height:);\n End_Point, Point(x:+(rail_width:/2)-(rail_wall_width:/2),y:,z:+rail_base_height:+rail_height:);\n};\n\n(Child) line_10: {\n Class, ug_line;\n Start_Point, Point(x:+(rail_width:/2)-(rail_wall_width:/2),y:,z:+rail_base_height:+rail_height:);\n End_Point, Point(x:+(rail_width:/2)-(rail_wall_width:/2),y:,z:+rail_base_height:);\n};\n\n(Child) line_11: {\n Class, ug_line;\n Start_Point, Point(x:+(rail_width:/2)-(rail_wall_width:/2),y:,z:+rail_base_height:);\n End_Point, Point(x:,y:,z:+rail_base_height:);\n};\n\n(Child) line_12: {\n Class, ug_line;\n Start_Point, Point(x:,y:,z:+rail_base_height:);\n End_Point, Point(x:,y:,z:);\n};\n\n"
+    initial_rail = "(Child) rail_path_1: {\n Class, ug_line;\n Start_Point, Point(x:,y:,z:);\n End_Point, Point(0,100,0);\n};\n\n"
+    rail = "(child) rail_profile: {\nclass, ug_curve_join;\nprofile, {line_1:, line_2:, line_3:, line_4:,line_5:,line_6:,line_7:,line_8:,line_9:,line_10:,line_11:,line_12:};\n};\n\n(child) rail_path: {\nclass, ug_curve_join;\nprofile, {" + variable_to_DFA["rail_path"][0] + ":};\n};\n\n(child) rail: {\nclass, ug_swept;\nguide, {{forward, rail_path:}};\nsection, {{forward, rail_profile:}};\nscaling, {scale_constant, 1};\nalignment_init, parameter;\norientation, {orientation_fixed};\ntolerances, {0, 0, 0};\n};\n\n(child) rail_colored: {\nclass, ug_body;\nfeature, {rail:};\nlayer, 1;\ncolor, ug_askClosestColor(RED);\n};\n\n"
+    #rail_path - Bør nok legges til med feeding rails
+    grid = "(Child) grid: {\n Class, ug_block;\n length, " + variable_to_DFA["grid_length"] + ";\n width, " + variable_to_DFA["grid_width"] + ";\n height, 0.01;\n origin, point(0,0,0);\n};\n\n"
+    s = initial_lines + parameters + lines + initial_rail + rail + grid
+    file = open("dfa_test.dfa", "w")
+    file.write(s)
+    file.close
 
 
-def update_obstacles(parameter_string): 
+obstacle_counter = 0    
+    
+def update_obstacles(parameter_string, counter): 
     start_x = parameter_string.split("obstacle_position=")[1].split('%2C')[0]
     start_y = parameter_string.split('%2C')[1].split('&')[0]
     position = start_x + "," + start_y
@@ -168,9 +185,18 @@ def update_obstacles(parameter_string):
 
     length = parameter_string.split('obstacle_length=')[1]
     variable_to_DFA["obstacle_length"].append(length)
+    
+    global obstacle_counter
+    obstacle_counter = counter + 1
+    s = "(Child) obstacle" + str(obstacle_counter) + ": {\n Class, ug_block;\n length, " + length + ";\n width, " + width + ";\n height, 10;\n origin, point(" + position + ",0.1);\n};\n\n"
+    file = open("dfa_test.dfa", "a")
+    file.write(s)
+    file.close
 
+    
+feeding_line_counter = 0    
 
-def update_feeding_lines(parameter_string):
+def update_feeding_lines(parameter_string, counter):
     start_x = parameter_string.split('feeding_start=')[1].split('%2C')[0]
     start_y = parameter_string.split('%2C')[1].split('&')[0]
     start_position = start_x + "," + start_y
@@ -180,6 +206,13 @@ def update_feeding_lines(parameter_string):
     end_y = parameter_string.split('%2C')[2]
     end_position = end_x + "," + end_y
     variable_to_DFA["feeding_stop"].append(end_position)
+    
+    global feeding_line_counter
+    feeding_line_counter = counter + 1
+    s = "" #TODO: Sett inn ug_line her, bygges senere til rail med railpath
+    file = open("dfa_test.dfa", "a")
+    file.write(s)
+    file.close
 
 
 # def set_error_message(min, max, variable, error_filename):
@@ -291,7 +324,7 @@ class MyHandler(BaseHTTPRequestHandler):
             post_body = self.rfile.read(content_len)
             param_line = post_body.decode()
             params = parse_parameters(param_line)
-            update_obstacles(param_line)
+            update_obstacles(param_line, obstacle_counter)
             self.write_HTML_file(userinterface_addObstacle)    
 
         elif self.path.find("/addFeedingLine") != -1:
@@ -299,7 +332,7 @@ class MyHandler(BaseHTTPRequestHandler):
             post_body = self.rfile.read(content_len)
             param_line = post_body.decode()
             params = parse_parameters(param_line)
-            update_feeding_lines(param_line)
+            update_feeding_lines(param_line, feeding_rail_counter)
             self.write_HTML_file(userinterface_addFeedingLine)
 
 
