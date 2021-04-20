@@ -20,15 +20,23 @@ userinterface_order = Path("tmp/userinterface_order.html")
 userinterface_addObstacle = Path("html/userinterface_addObstacle.html")
 userinterface_addFeedingLine = Path("html/userinterface_addFeedingLine.html")
 #image_file = Path("theProduct.png")
-"""
+
 variable_to_DFA = {
-    "seat_depth": "PARAM_SEAT_DEPTH",
-    "chair_width": "PARAM_WIDTH",
-    "back_height": "PARAM_BACK_HEIGHT",
-    "leg_side": "PARAM_FRAME_THICKNESS",
-    "seat_height": "PARAM_LEG_HEIGHT",
+    # Rail system
+    "start_point": "0,0",
+    "end_point": "0,0",    
+    "grid_width": "100",
+    "griid_length": "100",
+
+    # Obstacle
+    "obstacle_position": "0,0",
+    "obstacle_width": "0",
+    "obstacle_length": "0",
+
+    # Feeding rail
+    "feeding_start": "0,0",
+    "feeding_stop": "0,0"
 }
-"""
 
 def reload_nx():
     theSession = NXOpen.Session.GetSession()
