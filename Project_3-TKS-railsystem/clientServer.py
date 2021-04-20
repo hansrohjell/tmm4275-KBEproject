@@ -29,13 +29,13 @@ variable_to_DFA = {
     "griid_length": "100",
 
     # Obstacle
-    "obstacle_position": "0,0",
-    "obstacle_width": "0",
-    "obstacle_length": "0",
+    "obstacle_position": ["0,0"],
+    "obstacle_width": ["0"],
+    "obstacle_length": ["0"],
 
     # Feeding rail
-    "feeding_start": "0,0",
-    "feeding_stop": "0,0"
+    "feeding_start": ["0,0"],
+    "feeding_stop": ["0,0"]
 }
 
 def reload_nx():
@@ -142,6 +142,20 @@ def lock_and_order(filename):
         file.seek(0)
         file.write(data)
         file.truncate()
+        
+def update_rail_system(parameter_string):
+    start_x = parameter_string.split('start_point=')[1].split('%2C')[0]
+    start_y = parameter_string.split('%2C')[1].split('&')[0]
+    variable_to_DFA["start_point"] = start_x + "," + start_y
+
+    end_x = parameter_string.split('end_point=')[1].split('%2C')[0]
+    end_y = parameter_string.split('%2C')[2].split('&')[0]
+    variable_to_DFA["end_point"] = end_x + "," + end_y
+
+    variable_to_DFA["grid_width"] = parameter_string.split('grid_width=')[1].split('&')[0]
+    variable_to_DFA["grid_length"] = parameter_string.split('grid_length=')[1]
+
+    #print(variable_to_DFA) # Test av funksjon
 
 def update_feedingLines(starting_point, ending_point):
    #TODO: Oppdatere dict med feedinglines
