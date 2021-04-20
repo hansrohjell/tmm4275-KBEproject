@@ -29,13 +29,13 @@ variable_to_DFA = {
     "griid_length": "100",
 
     # Obstacle
-    "obstacle_position": ["0,0"],
-    "obstacle_width": ["0"],
-    "obstacle_length": ["0"],
+    "obstacle_position": [],
+    "obstacle_width": [],
+    "obstacle_length": [],
 
     # Feeding rail
-    "feeding_start": ["0,0"],
-    "feeding_stop": ["0,0"]
+    "feeding_start": [],
+    "feeding_stop": []
 }
 
 def reload_nx():
@@ -155,16 +155,30 @@ def update_rail_system(parameter_string):
     variable_to_DFA["grid_width"] = parameter_string.split('grid_width=')[1].split('&')[0]
     variable_to_DFA["grid_length"] = parameter_string.split('grid_length=')[1]
 
-    #print(variable_to_DFA) # Test av funksjon
 
-def update_feedingLines(starting_point, ending_point):
-   #TODO: Oppdatere dict med feedinglines
-    pass
+def update_obstacles(parameter_string): 
+    start_x = parameter_string.split("obstacle_position=")[1].split('%2C')[0]
+    start_y = parameter_string.split('%2C')[1].split('&')[0]
+    position = start_x + "," + start_y
+    variable_to_DFA["obstacle_position"].append(position)
 
-def update_obstacles(position, width, length):
-    #TODO: Oppdatere dict med obstacles
-    pass
+    width = parameter_string.split('obstacle_width=')[1].split('&')[0]
+    variable_to_DFA["obstacle_width"].append(width)
 
+    length = parameter_string.split('obstacle_length=')[1]
+    variable_to_DFA["obstacle_length"].append(length)
+
+
+def update_feeding_lines(parameter_string):
+    start_x = parameter_string.split('feeding_start=')[1].split('%2C')[0]
+    start_y = parameter_string.split('%2C')[1].split('&')[0]
+    start_position = start_x + "," + start_y
+    variable_to_DFA["feeding_start"].append(start_position)
+
+    end_x = parameter_string.split('feeding_end=')[1].split('%2C')[0]
+    end_y = parameter_string.split('%2C')[2]
+    end_position = end_x + "," + end_y
+    variable_to_DFA["feeding_stop"].append(end_position)
 
 
 # def set_error_message(min, max, variable, error_filename):
@@ -245,7 +259,7 @@ class MyHandler(BaseHTTPRequestHandler):
             post_body = self.rfile.read(content_len)
             param_line = post_body.decode()
             params = parse_parameters(param_line)
-            print(param_line)
+            update_rail_system(param_line)
             self.write_HTML_file(userinterface_file)
             # Update values in html files from param
             update_defaults(userinterface_file,
@@ -271,23 +285,21 @@ class MyHandler(BaseHTTPRequestHandler):
                 lock_and_order(userinterface_order)
                 self.write_HTML_file(userinterface_order)
             """
-        elif self.path.find("/addFeedingLine"):
+        elif self.path.find("/addObstacle") != -1:
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
             param_line = post_body.decode()
             params = parse_parameters(param_line)
-            print(param_line)
-            #TODO: Bruk update_feedingLine til å oppdatere dict med verdier for en feedingline.
-            self.write_HTML_file(userinterface_addFeedingLine)
+            update_obstacles(param_line)
+            self.write_HTML_file(userinterface_addObstacle)    
 
-        elif self.path.find("/addObstacle"):
+        elif self.path.find("/addFeedingLine") != -1:
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
             param_line = post_body.decode()
             params = parse_parameters(param_line)
-            print(param_line)
-            #TODO: Bruk update_feedingline til å oppdatere dict med verdier for en obstacle
-            self.write_HTML_file(userinterface_addObstacle)
+            update_feeding_lines(param_line)
+            self.write_HTML_file(userinterface_addFeedingLine)
 
 
 
