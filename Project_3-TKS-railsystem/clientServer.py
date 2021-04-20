@@ -26,7 +26,7 @@ variable_to_DFA = {
     "start_point": "0,0",
     "end_point": "0,0",    
     "grid_width": "100",
-    "griid_length": "100",
+    "grid_length": "100",
 
     # Obstacle
     "obstacle_position": [],
@@ -142,6 +142,7 @@ def lock_and_order(filename):
         file.seek(0)
         file.write(data)
         file.truncate()
+        
         
 def update_rail_system(parameter_string):
     start_x = parameter_string.split('start_point=')[1].split('%2C')[0]
