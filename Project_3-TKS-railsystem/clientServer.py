@@ -188,7 +188,7 @@ def update_obstacles(parameter_string, counter):
     
     global obstacle_counter
     obstacle_counter = counter + 1
-    s = "(Child) obstacle" + str(obstacle_counter) + ": {\n Class, ug_block;\n length, " + length + ";\n width, " + width + ";\n height, 2000;\n origin, point(" + position + ",0);\n};\n\n"
+    s = "(Child) obstacle_" + str(obstacle_counter) + ": {\n Class, ug_block;\n length, " + length + ";\n width, " + width + ";\n height, 2000;\n origin, point(" + position + ",0);\n};\n\n"
     file = open("dfa_test.dfa", "a")
     file.write(s)
     file.close
@@ -209,10 +209,24 @@ def update_feeding_lines(parameter_string, counter):
     
     global feeding_line_counter
     feeding_line_counter = counter + 1
-    s = "" #TODO: Sett inn ug_line her, bygges senere til rail med railpath
+    rail_name = "feeding_rail_" + str(feeding_line_counter)
+    variable_to_DFA["rail_path"].append(rail_name)
+    s = "(Child) " + rail_name + " {\n Class, ug_line;\n Start_Point, Point(" + start_position + ",1000);\n End_Point, Point(" + end_position + ",1000);\n};\n\n"
+    rail_path = rail_path_updater(variable_to_DFA["rail_path"]) # Skaper duplikat, men overstyrer tidligere versjoner
+    rail_path_update = "(child) rail_path: {\nclass, ug_curve_join;\nprofile, {" + rail_path + ":};\n};\n\n"
+    file = open("dfa_test.dfa", "a")
+    file.write(s)
+    file.write(rail_path_update)
     file = open("dfa_test.dfa", "a")
     file.write(s)
     file.close
+    
+
+def rail_path_updater(list): # Tar inn listen med rail-elementer fra dict, gjør dem om til en sammenhengende string
+    s = ""
+    for i in list:
+        s += i + ":,"
+    return s
 
 
 # def set_error_message(min, max, variable, error_filename):
