@@ -38,7 +38,7 @@ variable_to_DFA = {
     "feeding_stop": [],
     
     # Rail path - legger til elementer her ettersom rail-pathen forlenges, alle delene blir satt sammen og bygget opp som et I-profil
-    "rail_path": ["rail_path_1"]
+    "rail_path": ["rail_path_1:"]
 }
 
 def reload_nx():
@@ -209,11 +209,11 @@ def update_feeding_lines(parameter_string, counter):
     
     global feeding_line_counter
     feeding_line_counter = counter + 1
-    rail_name = "feeding_rail_" + str(feeding_line_counter)
+    rail_name = "feeding_rail_" + str(feeding_line_counter) + ":"
     variable_to_DFA["rail_path"].append(rail_name)
     s = "(Child) " + rail_name + " {\n Class, ug_line;\n Start_Point, Point(" + start_position + ",1000);\n End_Point, Point(" + end_position + ",1000);\n};\n\n"
     rail_path = rail_path_updater(variable_to_DFA["rail_path"]) # Skaper duplikat, men overstyrer tidligere versjoner
-    rail_path_update = "(child) rail_path: {\nclass, ug_curve_join;\nprofile, {" + rail_path + ":};\n};\n\n"
+    rail_path_update = "(child) rail_path: {\nclass, ug_curve_join;\nprofile, {" + rail_path + "};\n};\n\n"
     file = open("dfa_test.dfa", "a")
     file.write(s)
     file.write(rail_path_update)
@@ -225,7 +225,7 @@ def update_feeding_lines(parameter_string, counter):
 def rail_path_updater(list): # Tar inn listen med rail-elementer fra dict, gjør dem om til en sammenhengende string
     s = ""
     for i in list:
-        s += i + ":,"
+        s += i + ","
     return s
 
 
