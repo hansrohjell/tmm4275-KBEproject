@@ -19,6 +19,7 @@ userinterface_tmp = Path("tmp/userinterface_tmp.html")
 userinterface_order = Path("tmp/userinterface_order.html")
 userinterface_addObstacle = Path("html/userinterface_addObstacle.html")
 userinterface_addFeedingLine = Path("html/userinterface_addFeedingLine.html")
+userinterface_addFeedingPoint = Path("html/userinterface_addFeedingPoint.html")
 #image_file = Path("theProduct.png")
 
 variable_to_DFA = {
@@ -37,10 +38,14 @@ variable_to_DFA = {
     "feeding_start": [],
     "feeding_stop": [],
     
+    # Feeding point
+    "feeding_points": [],
+    
     # Rail path - legger til elementer her ettersom rail-pathen forlenges, alle delene blir satt sammen og bygget opp som et I-profil
     "rail_path": ["rail_path_1:"]
 }
 
+'''
 def reload_nx():
     theSession = NXOpen.Session.GetSession()
     workPart = theSession.Parts.Work
@@ -84,7 +89,7 @@ def export_nx_img():
     theSession.DeleteUndoMark(markId1, "Export Image")
 
     imageExportBuilder1.Destroy()
-
+'''
 """
 def create_DFA(params, dfa_filename, dfa_template):
     # Open dfa template
@@ -245,6 +250,26 @@ def update_feeding_lines(parameter_string, counter):
     file.write(s)
     file.close
     
+    
+def feeding_point_checker(x,y,grid_x,grid_y):
+    if (x < 0) or (y < 0):
+        print("Feil: Negativt parameter (feeding point)")
+        return False
+    if (x > grid_x) or (y > grid_y):
+        print("Feil: Utenfor grid (feeding point)")
+        return False
+    return True
+
+def update_feeding_points(parameter_string):
+    point_x = parameter_string.split("feeding_point=")[1].split("%2C")[0]
+    point_y = parameter_string.split('%2C')[1].split('&')[0]
+
+    if not feeding_point_checker(int(point_x), int(point_y), int(variable_to_DFA["grid_length"]), int(variable_to_DFA["grid_width"])):
+        return
+
+    position = point_x + "," + point_y
+    variable_to_DFA["feeding_points"].append(position)
+    
 
 def rail_path_updater(list): # Tar inn listen med rail-elementer fra dict, gjør dem om til en sammenhengende string
     s = ""
@@ -310,9 +335,12 @@ class MyHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             self.write_HTML_file(userinterface_file)
-        
-
-        
+        elif self.path.find('/addFeedingPoint'):
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.write_HTML_file(userinterface_file)
+          
         else:
             self.send_response(404)
             self.end_headers()
@@ -372,6 +400,14 @@ class MyHandler(BaseHTTPRequestHandler):
             params = parse_parameters(param_line)
             update_feeding_lines(param_line, feeding_rail_counter)
             self.write_HTML_file(userinterface_addFeedingLine)
+            
+        elif self.path.find("/addFeedingPoint") != -1:
+            content_len = int(self.headers.get('Content-Length'))
+            post_body = self.rfile.read(content_len)
+            param_line = post_body.decode()
+            params = parse_parameters(param_line)
+            update_feeding_points(param_line)
+            self.write_HTML_file(userinterface_addFeedingPoint)
 
 
 
