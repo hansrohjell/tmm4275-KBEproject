@@ -173,6 +173,15 @@ def update_rail_system(parameter_string):
 
 
 obstacle_counter = 0    
+
+def obstacle_checker(position_x, position_y, length, width, grid_x, grid_y):
+    if (position_x < 0) or (position_y < 0) or (width < 0) or (length < 0):
+        print("Feil: Negativt parameter (obstacle)")
+        return False 
+    if (position_x + length > grid_x) or (position_y + width > grid_y):
+        print("Feil: Utenfor grid (obstacle)")
+        return False
+    return True
     
 def update_obstacles(parameter_string, counter): 
     start_x = parameter_string.split("obstacle_position=")[1].split('%2C')[0]
@@ -186,6 +195,9 @@ def update_obstacles(parameter_string, counter):
     length = parameter_string.split('obstacle_length=')[1]
     variable_to_DFA["obstacle_length"].append(length)
     
+    if not obstacle_checker(int(start_x),int(start_y),int(length),int(width),int(variable_to_DFA["grid_length"]),int(variable_to_DFA["grid_width"])):
+        return
+    
     global obstacle_counter
     obstacle_counter = counter + 1
     s = "(Child) obstacle_" + str(obstacle_counter) + ": {\n Class, ug_block;\n length, " + length + ";\n width, " + width + ";\n height, 2000;\n origin, point(" + position + ",0);\n};\n\n"
@@ -194,7 +206,16 @@ def update_obstacles(parameter_string, counter):
     file.close
 
     
-feeding_line_counter = 0    
+feeding_line_counter = 0  
+
+def feeding_line_checker(start_x, start_y, end_x, end_y, grid_x, grid_y): # Tar ikke hensyn til bjelkens bredde
+    if (start_x < 0) or (start_y < 0) or (end_x < 0) or (end_y < 0):
+        print("Feil: Negativt parameter (feeding rail)")
+        return False
+    if (start_x > grid_x) or (start_y > grid_y) or (end_x > grid_x) or (end_y > grid_y):
+        print("Feil: Utenfor grid (feeding rail)")
+        return False
+    return True
 
 def update_feeding_lines(parameter_string, counter):
     start_x = parameter_string.split('feeding_start=')[1].split('%2C')[0]
@@ -206,6 +227,9 @@ def update_feeding_lines(parameter_string, counter):
     end_y = parameter_string.split('%2C')[2]
     end_position = end_x + "," + end_y
     variable_to_DFA["feeding_stop"].append(end_position)
+    
+    if not feeding_line_checker(int(start_x), int(start_y), int(end_x), int(end_y), int(variable_to_DFA["grid_length"]), int(variable_to_DFA["grid_width"])):
+        return
     
     global feeding_line_counter
     feeding_line_counter = counter + 1
