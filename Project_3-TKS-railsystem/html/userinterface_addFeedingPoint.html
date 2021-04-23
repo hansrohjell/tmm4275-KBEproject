@@ -56,12 +56,19 @@
 
     <form action="/addFeedingPoint" method= "post" onsubmit= "return 1">
         <h3> Add feeding point</h3>
-        <label for="feeding_point">Set starting point [x, y]:</label><br>
+        <label for="feeding_point">Set feeding point [x, y]:</label><br>
         <input type="text" id="feeding_point" name="feeding_point" value="0,0"><br><br>
 
         <input type="submit" value="Add feeding point">
 
         Feeding point added
+
+    </form>
+    
+    <form action="/submitRailSys" method= "post" onsubmit= "return 1">
+        <h3> Generate rail system</h3>
+
+        <input type="submit" value="Generate rail system">
 
     </form>
 
