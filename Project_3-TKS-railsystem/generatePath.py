@@ -247,7 +247,6 @@ class pathFinder():
                 self.construction_arcs.append([center, intersect])
 
             else:
-                #TODO: kommenter her
                 if line[1][0] > 0:
                     self.construction_arcs.append([[rad, 0], intersect])
                 elif line[1][0] < 0:
@@ -269,7 +268,6 @@ class pathFinder():
 
     def line_vector(self, line):
         vector = []
-        # slow code.. would probably execute a lot faster with numpy
         for val_1, val_2 in zip(line[0], line[1]):
             vector.append(val_1-val_2)
         return vector
